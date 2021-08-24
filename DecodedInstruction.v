@@ -1,0 +1,4 @@
+
+interface DecodedInsttruction ();
+
+endinterface

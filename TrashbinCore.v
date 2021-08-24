@@ -7,11 +7,14 @@ output wire [31:0] DebugData,
 
 
 //Memory
-output wire [31:0] AddressBus,
+output reg [31:0] AddressBus,
 input wire [31:0] DataReadBus,
 output wire [31:0] DataWriteBus,
 
-output wire WriteAssert
+output wire WriteAssert,
+
+input wire ReadOK,
+input wire WriteOK
 
 
 );
@@ -19,7 +22,6 @@ output wire WriteAssert
 
 assign WriteAssert = 0;
 
-assign AddressBus = ProgramCounter;
 assign DebugData[0] = DataReadBus[0];
 
 assign DebugData[31:1] = CurrentInstruction[31:1];
@@ -51,8 +53,16 @@ begin
 	if(CPU_PHASE == 4)
 	begin
 		CPU_PHASE <= 0;
-	end else begin
-		CPU_PHASE <= CPU_PHASE + 1;
+	end if(CPU_PHASE == 1) begin
+		if(ReadOK)
+		begin
+			CPU_PHASE <= CPU_PHASE + 1;		
+		end
+	end else begin	
+	if(!InvalidInstruction)
+		begin
+				CPU_PHASE <= CPU_PHASE + 1;
+		end
 	end
 end
 
@@ -74,7 +84,7 @@ reg [31:0] CurrentInstruction;
 
 always@ (posedge CoreClock)
 begin
-	if(CPU_PHASE == 0)
+	if(CPU_PHASE == 1)
 	begin
 		CurrentInstruction <= DataReadBus;
 	end
@@ -96,6 +106,24 @@ ALU alu(
 	ALU_Result,
 	ALU_Func
 );
+
+//Instruction Decoder
+wire InvalidInstruction;
+
+InstructionDecoder instructionDecoder(
+	CurrentInstruction,
+
+	InvalidInstruction
+);
+
+
+//Bus Drivers - Move to other files ???
+always@ (*)
+begin
+
+	AddressBus <= ProgramCounter;
+	//TODO:Load & Store
+end
 
 
 

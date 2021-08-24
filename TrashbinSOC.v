@@ -39,7 +39,11 @@ TrashbinCore Core(
 	AddressBus,
 	DataReadBus,
 	DataWriteBus,
-	WriteAssert
+	WriteAssert,
+	
+	
+	1'b1, //Read OK
+	1'b1 //Write OK
 );
 
 
