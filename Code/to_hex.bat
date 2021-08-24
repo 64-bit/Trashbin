@@ -1,0 +1,1 @@
+srec_cat.exe ./test/bin/test.bin -binary -output test.hex -Intel
