@@ -93,6 +93,41 @@ end
 
 
 
+
+
+
+//RegisterFile
+
+wire [31:0] RegisterWriteData;
+wire [4:0] RegisterWriteTarget;
+wire RegisterWriteEnable;
+
+wire [31:0] RegisterReadPortA;
+wire [4:0] RegisterReadTargetA;
+wire [31:0] RegisterReadPorB;
+wire [4:0] RegisterReadTargetB;
+
+
+//TODO:Can this be hard-wired or is it more involved to set reg read A/B
+assign RegisterReadTargetA = RS1;
+assign RegisterReadTargetB = RS2;
+assign RegisterWriteTarget = RD;
+
+RegisterFile registerFile
+(
+	CoreClock,
+
+	RegisterWriteData,
+	RegisterWriteTarget,
+	RegisterWriteEnable,
+	
+	RegisterReadPortA,
+	RegisterReadTargetA,
+	RegisterReadPorB,
+	RegisterReadTargetB
+);
+
+
 //ALU Stuff
 
 wire [31:0] LHS;
@@ -110,8 +145,29 @@ ALU alu(
 //Instruction Decoder
 wire InvalidInstruction;
 
+	//Register outputs
+	wire [4:0] RD;
+	wire [4:0] RS1;
+	wire [4:0] RS2;
+	
+	//Decoded imediate outputs
+	wire [31:0] DecodedImediate;
+	
+	//Control outputs
+	wire [1:0] LHSSource;
+	wire [1:0] RHSSource;
+
+
 InstructionDecoder instructionDecoder(
 	CurrentInstruction,
+	
+	RD,
+	RS1,
+	RS2,
+	
+	DecodedImediate,
+	LHSSource,
+	RHSSource,
 
 	InvalidInstruction
 );
@@ -124,6 +180,14 @@ begin
 	AddressBus <= ProgramCounter;
 	//TODO:Load & Store
 end
+
+//LHS bus driver
+always@ (*)
+begin 
+	
+end
+
+//RHS bus driver
 
 
 
