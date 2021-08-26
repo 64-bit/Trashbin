@@ -181,13 +181,42 @@ CorePLL CorePLLInstance(
 		pllLocked    //  locked.export
 	);
 
+wire [15:0] HexDisplay;
 
 TrashbinSOC SOCInstance(
 
  coreClock,
  
 	LEDR[9:0],
-	LEDG[7:0]
+	LEDG[7:0],
+	HexDisplay
+);
+
+SevenSegment seg0(
+
+HexDisplay[3:0],
+HEX0
+
+);
+
+SevenSegment seg1(
+
+HexDisplay[7:4],
+HEX1
+
+);
+
+SevenSegment seg2(
+
+HexDisplay[11:8],
+HEX2
+
+);
+
+SevenSegment seg3(
+
+HexDisplay[15:12],
+HEX3
 
 );
 

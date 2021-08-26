@@ -26,7 +26,7 @@ assign ReadPortB = Registers[ReadSourceB];
 always @ (posedge Clock)
 begin
 
-	if(WriteEnable)
+	if(WriteEnable && WriteTarget != 5'd0)//Can't write register 0
 	begin
 		Registers[WriteTarget] <= WriteData;
 	end

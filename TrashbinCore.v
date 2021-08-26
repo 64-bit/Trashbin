@@ -24,13 +24,14 @@ assign WriteAssert = 0;
 
 assign DebugData[0] = DataReadBus[0];
 
-assign DebugData[31:1] = CurrentInstruction[31:1];
-
+//assign DebugData[31:1] = CurrentInstruction[31:1];
+assign DebugData[31:1] = RegisterReadPortA[31:1];
 
 //Main CPU Core, this should be separate from any memory system / L1 cache / on-die ram
 
 
-reg [4:0] CPU_PHASE = 0;
+reg [4:0] CPU_PHASE;
+initial CPU_PHASE = 5'd0;
 //Explain plz bro
 
 //Phase 0: Clock PC into memory, issue read
@@ -51,18 +52,22 @@ always@ (posedge CoreClock)
 begin
 
 	if(CPU_PHASE == 4)
-	begin
-		CPU_PHASE <= 0;
-	end if(CPU_PHASE == 1) begin
-		if(ReadOK)
+	begin	
+		CPU_PHASE <= 0;		
+	end else if(CPU_PHASE == 1) begin
+		if(ReadOK == 1)
 		begin
 			CPU_PHASE <= CPU_PHASE + 1;		
 		end
-	end else begin	
-	if(!InvalidInstruction)
-		begin
-				CPU_PHASE <= CPU_PHASE + 1;
+	end else if(CPU_PHASE == 2) begin
+		if(InvalidInstruction == 1)
+		begin		
+			//OH SHIT we hard locked
+		end else begin
+			CPU_PHASE <= CPU_PHASE + 1;		
 		end
+	end else begin
+		CPU_PHASE <= CPU_PHASE + 1;
 	end
 end
 
@@ -72,7 +77,7 @@ initial ProgramCounter = 32'd0;
 
 always@ (posedge CoreClock)
 begin
-	if(CPU_PHASE == 4)
+	if(CPU_PHASE == 3)
 	begin
 		ProgramCounter <= ProgramCounter+4;
 	end
@@ -104,7 +109,7 @@ wire RegisterWriteEnable;
 
 wire [31:0] RegisterReadPortA;
 wire [4:0] RegisterReadTargetA;
-wire [31:0] RegisterReadPorB;
+wire [31:0] RegisterReadPortB;
 wire [4:0] RegisterReadTargetB;
 
 
@@ -112,6 +117,9 @@ wire [4:0] RegisterReadTargetB;
 assign RegisterReadTargetA = RS1;
 assign RegisterReadTargetB = RS2;
 assign RegisterWriteTarget = RD;
+
+assign RegisterWriteEnable = (CPU_PHASE == 3) & WritesRegisterFile;
+
 
 RegisterFile registerFile
 (
@@ -123,7 +131,7 @@ RegisterFile registerFile
 	
 	RegisterReadPortA,
 	RegisterReadTargetA,
-	RegisterReadPorB,
+	RegisterReadPortB,
 	RegisterReadTargetB
 );
 
@@ -133,7 +141,7 @@ RegisterFile registerFile
 wire [31:0] LHS;
 wire [31:0] RHS;
 wire [31:0] ALU_Result;
-wire [4:0] ALU_Func;
+wire [3:0] ALU_Func;
 
 ALU alu(
 	LHS,
@@ -168,7 +176,12 @@ InstructionDecoder instructionDecoder(
 	DecodedImediate,
 	LHSSource,
 	RHSSource,
-
+	ALU_Func,
+	//Other random control signals
+	WritesRegisterFile,
+	WritesRam,
+	ReadsRam,
+		
 	InvalidInstruction
 );
 
@@ -181,15 +194,96 @@ begin
 	//TODO:Load & Store
 end
 
+
+//Bus driver sources 
+
+
+
 //LHS bus driver
-always@ (*)
-begin 
+
+assign LHS = LHSBusDriver(
+	LHSSource,
 	
-end
+	RegisterReadPortA,
+	DecodedImediate,
+	DataReadBus
+);
+
+function [31:0] LHSBusDriver;
+	input [1:0] sourceSelect;
+
+	input [31:0] RegisterPortA;
+	input [31:0] ImediateValue;
+	input [31:0] MemoryReadPort;
+	
+	begin
+	
+	case(sourceSelect)
+	
+		2'b00 : LHSBusDriver = RegisterPortA;
+		2'b01 : LHSBusDriver = ImediateValue;
+		2'b10 : LHSBusDriver = MemoryReadPort;
+	
+		default : LHSBusDriver = 32'd0;
+	endcase
+	
+	end
+endfunction
+
+
 
 //RHS bus driver
+assign RHS = RHSBusDriver(
+	RHSSource,
+	
+	RegisterReadPortB,
+	DecodedImediate,
+	DataReadBus
+);
 
+function [31:0] RHSBusDriver;
+	input [1:0] sourceSelect;
 
+	input [31:0] RegisterPortB;
+	input [31:0] ImediateValue;
+	input [31:0] MemoryReadPort;
+	
+	begin
+	
+	case(sourceSelect)
+	
+		2'b00 : RHSBusDriver = RegisterPortB;
+		2'b01 : RHSBusDriver = ImediateValue;
+		2'b10 : RHSBusDriver = MemoryReadPort;
+	
+		default : RHSBusDriver = 32'd0;
+	endcase
+	
+	end
+endfunction
+
+//Register write bus driver
+assign RegisterWriteData = RegisterWriteBusDriver(
+	2'b00,	
+	ALU_Result
+);
+
+function [31:0] RegisterWriteBusDriver;
+	input [1:0] sourceSelect;
+
+	input [31:0] ALUResult;
+	
+	begin
+	
+	case(sourceSelect)
+	
+		2'b00 : RegisterWriteBusDriver = ALUResult;
+
+	
+		default : RegisterWriteBusDriver = 32'd0;
+	endcase
+	
+	end
+endfunction
 
 endmodule
-
