@@ -106,8 +106,13 @@ always @ (*) begin
 		4'b0110 : begin end//ORI
 		4'b0111 : begin end//ANDI
 		
+		//Shift operations break the rules because of course something has to
+		4'b0001 : begin end //Shift left logical imediate. Decodes correctly as I type because the ALU will truncate the ALU RHS bus to 5 bits
 		
-		
+		//Shift Right Logical / Arithmatic Imediate needs special case to select mode
+		4'b0101 : begin
+			ALUOperation <= {Instruction[30] ,funct3};
+		end
 		
 		default: begin InvalidInstructionSignal <= 1'b1; end
 		endcase
@@ -138,9 +143,13 @@ always @ (*) begin
 		end
 		4'b1000 : begin //Sub
 		end
+		
+		4'b0001 : begin end //Shift Left Logical
 
-		4'b0100 : begin //Xor
-		end
+		4'b0100 : begin end //Xor
+		4'b0101 : begin end //Shift Right Logical
+		4'b1101 : begin end //Shift Right Arithmatic
+		
 		4'b0110 : begin //Or
 		end
 		4'b0111 : begin //And

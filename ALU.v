@@ -39,9 +39,15 @@ function [31:0] ALU_Logic;
 	
 		4'b0000 : ALU_Logic = LHS + RHS;
 		4'b1000 : ALU_Logic = LHS - RHS;
+		4'b0001 : ALU_Logic = LHS << RHS;
 
 		
 		4'b0100 : ALU_Logic = LHS ^ RHS;
+
+		4'b0101 : ALU_Logic = LHS >> RHS;
+		4'b1101 : ALU_Logic = LHS >>> RHS;
+		
+		
 		4'b0110 : ALU_Logic = LHS | RHS;
 		4'b0111 : ALU_Logic = LHS & RHS;
 		
