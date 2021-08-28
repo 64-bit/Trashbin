@@ -16,6 +16,7 @@ wire [31:0] DebugData;
 
 assign LEDS[9:0] = DebugData[29:20];
 assign LEDS_G[0] = DebugData[0];
+assign LEDS_G[1] = StartupSignal;
 
 assign HexDisplay = {AddressBus[15:0]};
 
@@ -25,6 +26,13 @@ wire [31:0] DataReadBus;
 wire [31:0] DataWriteBus;
 
 wire WriteAssert;
+
+reg StartupSignal = 1'd0;
+
+always @(posedge CoreClock)
+begin
+	StartupSignal <= 1'd1;
+end
 
 
 TempRam datRam(

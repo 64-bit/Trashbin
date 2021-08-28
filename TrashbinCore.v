@@ -190,7 +190,7 @@ InstructionDecoder instructionDecoder(
 always@ (*)
 begin
 
-	AddressBus <= ProgramCounter;
+	AddressBus <= { 2'b00, ProgramCounter[31:2]};
 	//TODO:Load & Store
 end
 
