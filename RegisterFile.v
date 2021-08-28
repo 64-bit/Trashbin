@@ -15,7 +15,7 @@ module RegisterFile(
 	
 );
 
-reg [31:0] Registers [4:0];
+reg [31:0] Registers [0:31];
 
 initial Registers[5'd0] = 32'd0;
 

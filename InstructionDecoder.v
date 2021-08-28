@@ -49,6 +49,29 @@ assign funct3 = Instruction [14:12];
 wire [6:0] funct7;
 assign funct7 = Instruction[31:25];
 
+//RIP code quality. there must be a better way to write this lol...
+//At least I don't have to write a X86 decoder...
+//Sign extend driver does not have to be this wide, but it makes the code below cleaner, and the compiler will optimize away the un-used bits
+wire [31:0] signExtendDriver = {
+Instruction[31],Instruction[31],Instruction[31],Instruction[31],    Instruction[31],Instruction[31],Instruction[31],Instruction[31],
+Instruction[31],Instruction[31],Instruction[31],Instruction[31],    Instruction[31],Instruction[31],Instruction[31],Instruction[31],
+Instruction[31],Instruction[31],Instruction[31],Instruction[31],    Instruction[31],Instruction[31],Instruction[31],Instruction[31],
+Instruction[31],Instruction[31],Instruction[31],Instruction[31],    Instruction[31],Instruction[31],Instruction[31],Instruction[31]};
+
+wire [11:0] immediate_I_type = Instruction[31:20];
+wire [31:0] immediate_I_typeSignExtended = {signExtendDriver[31:12], immediate_I_type[11:0]};
+
+wire [11:0] immediate_S_type = {Instruction[31:25], Instruction[11:7]};
+wire [31:0] immediate_S_typeSignExtended = {signExtendDriver[31:12], immediate_S_type[11:0]};
+
+wire [12:0] immediate_B_type = {Instruction[31], Instruction[7], Instruction[30:25], Instruction[11:8], 1'd0};
+wire [31:0] immediate_B_typeSignExtended = {signExtendDriver[31:13], immediate_B_type[12:0]};
+
+wire [31:0] immediate_U_type = {Instruction[31:12], 12'd0};
+wire [31:0] immediate_U_typeSignExtended = immediate_U_type;
+
+wire [20:0] immediate_J_type = {Instruction[31], Instruction[19:12], Instruction[20], Instruction[30:21], 1'd0};
+wire [31:0] immediate_J_typeSignExtended = {signExtendDriver[31:21], immediate_J_type[20:0]};
 
 
 always @ (*) begin
@@ -64,12 +87,37 @@ always @ (*) begin
 
 	casez (opcode)
 		
-		//OPI
+		//BEGIN OPI
+		7'b00100?? : begin	
+		//All ops can directly consume this concatinated thing into the ALU
+		ALUOperation <= {1'd0 ,funct3};
+		//All ops use the same imediate format
+		DecodedImediate <= immediate_I_typeSignExtended;
+		
+		//All ops use the same read/write ports
+		LHSsource <= 2'd0;//Register file read port A	
+		RHSsource <= 2'd1;//Fully Decoded Imediate	
+		WritesRegisterFile <= 1;
+		
+		case({1'd0 ,funct3})
+		
+		4'b0000 : begin end//ADDI
+		4'b0100 : begin end//XORI
+		4'b0110 : begin end//ORI
+		4'b0111 : begin end//ANDI
 		
 		
-				
 		
-		//OP
+		
+		default: begin InvalidInstructionSignal <= 1'b1; end
+		endcase
+		end
+		//END OPI
+		
+		
+		
+		
+		//BEGIN OP
 		7'b01100?? : begin
 
 		//All ops can directly consume this concatinated thing into the ALU
@@ -77,7 +125,8 @@ always @ (*) begin
 		//All ops use the same read/write ports
 		LHSsource <= 2'd0;	
 		RHSsource <= 2'd0;	
-		
+		WritesRegisterFile <= 1;
+
 		
 		case({Instruction[30] ,funct3})
 		
@@ -86,14 +135,24 @@ always @ (*) begin
 		//LHS => rs1
 		//RHS => rs2
 		//ALU mode => add
-			WritesRegisterFile <= 1;
 		end
-		
+		4'b1000 : begin //Sub
+		end
+
+		4'b0100 : begin //Xor
+		end
+		4'b0110 : begin //Or
+		end
+		4'b0111 : begin //And
+		end		
 		
 		
 		default: begin InvalidInstructionSignal <= 1'b1; end
 		endcase
 		end
+		//END OP
+		
+		
 		
 
 		default: begin	
