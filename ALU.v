@@ -29,23 +29,33 @@ input Clock
 
 */
 
+
+
 function [31:0] ALU_Logic;
 	input [31:0] lhs;
 	input [31:0] rhs;
 	input [3:0] func;
 	begin
 	
+	//wire signed [31:0] lhs_signed = lhs;
+	//wire signed [31:0] rhs_signed = rhs;
+	
+	
 	case(func)
 	
 		4'b0000 : ALU_Logic = LHS + RHS;
 		4'b1000 : ALU_Logic = LHS - RHS;
-		4'b0001 : ALU_Logic = LHS << RHS;
-
+		
+		4'b0001 : ALU_Logic = LHS << RHS[4:0];
+		
+		4'b0010 : ALU_Logic = {31'd0, $signed(lhs) < $signed(rhs)}; //Set Less than
+		4'b0011 : ALU_Logic = {31'd0, lhs < rhs}; //Set Less than unsigned
+		
 		
 		4'b0100 : ALU_Logic = LHS ^ RHS;
 
-		4'b0101 : ALU_Logic = LHS >> RHS;
-		4'b1101 : ALU_Logic = LHS >>> RHS;
+		4'b0101 : ALU_Logic = LHS >> RHS[4:0];
+		4'b1101 : ALU_Logic = LHS >>> RHS[4:0];
 		
 		
 		4'b0110 : ALU_Logic = LHS | RHS;

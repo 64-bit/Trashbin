@@ -195,6 +195,8 @@ begin
 end
 
 
+wire [7:0] DebugProgramCounterShort = ProgramCounter[7:0];
+
 //Bus driver sources 
 
 
@@ -223,6 +225,7 @@ function [31:0] LHSBusDriver;
 		2'b00 : LHSBusDriver = RegisterPortA;
 		2'b01 : LHSBusDriver = ImediateValue;
 		2'b10 : LHSBusDriver = MemoryReadPort;
+		2'b11 : LHSBusDriver = 32'd0;
 	
 		default : LHSBusDriver = 32'd0;
 	endcase

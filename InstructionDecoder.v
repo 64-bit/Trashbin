@@ -87,6 +87,21 @@ always @ (*) begin
 
 	casez (opcode)
 		
+		
+		//Begin LUI
+		7'b01101?? : begin	
+		//Passthrough on ALU ?, Zero source
+		//Encode as
+		DecodedImediate <= immediate_U_typeSignExtended;
+		ALUOperation <= 4'b0111;//AND, allows passthrough
+		LHSsource <= 2'd1;//Fully Decoded Imediate	
+		RHSsource <= 2'd1;//Fully Decoded Imediate	
+		WritesRegisterFile <= 1;
+
+		//end LUI
+		end
+		
+		
 		//BEGIN OPI
 		7'b00100?? : begin	
 		//All ops can directly consume this concatinated thing into the ALU
@@ -102,6 +117,9 @@ always @ (*) begin
 		case({1'd0 ,funct3})
 		
 		4'b0000 : begin end//ADDI
+		4'b0010 : begin end//Set less than
+		4'b0011 : begin end//Set less than unsigned
+
 		4'b0100 : begin end//XORI
 		4'b0110 : begin end//ORI
 		4'b0111 : begin end//ANDI
@@ -111,7 +129,7 @@ always @ (*) begin
 		
 		//Shift Right Logical / Arithmatic Imediate needs special case to select mode
 		4'b0101 : begin
-			ALUOperation <= {Instruction[30] ,funct3};
+			ALUOperation <= {Instruction[30] ,3'b101};
 		end
 		
 		default: begin InvalidInstructionSignal <= 1'b1; end
@@ -143,6 +161,9 @@ always @ (*) begin
 		end
 		4'b1000 : begin //Sub
 		end
+		
+		4'b0010 : begin end//Set less than
+		4'b0011 : begin end//Set less than unsigned
 		
 		4'b0001 : begin end //Shift Left Logical
 
