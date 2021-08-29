@@ -28,6 +28,11 @@ module InstructionDecoder(
 	
 	output reg IsJumpInstruction,
 	output reg JumpMode,
+	
+	output reg IsMemoryWrite,
+	output reg IsMemoryRead,
+	output reg [1:0] MemoryAccessWidth,
+	output reg MemoryAccessSignExtend,
 		
 
 	//Error handling / debug signals
@@ -97,6 +102,11 @@ always @ (*) begin
 	
 	IsJumpInstruction <= 0;
 	JumpMode <= 0;//0 == JAL, 1 == JARL
+	
+	IsMemoryWrite <= 0;
+	IsMemoryRead <= 0;
+	MemoryAccessWidth <= 2'd0; //0 == 1 byte, 1 == 2 bytes, 2 == 4 bytes
+	MemoryAccessSignExtend <= 0; //0 = zero extend, 1 = sign extend
 
 	casez (opcode)
 		

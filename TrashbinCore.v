@@ -193,6 +193,11 @@ wire InvalidInstruction;
 	wire IsJumpInstruction;
 	wire JumpMode; //0 == JAL, 1 == JALR
 	
+	wire IsMemoryWrite;
+	wire IsMemoryRead;
+	wire [1:0] MemoryAccessWidth;
+	wire MemoryAccessSignExtend;
+	
 
 InstructionDecoder instructionDecoder(
 	CurrentInstruction,
@@ -215,6 +220,11 @@ InstructionDecoder instructionDecoder(
 	
 	IsJumpInstruction,
 	JumpMode,
+	
+	IsMemoryWrite,
+	IsMemoryRead,
+	MemoryAccessWidth,
+	MemoryAccessSignExtend,
 		
 	InvalidInstruction
 );
@@ -259,7 +269,7 @@ function [31:0] LHSBusDriver;
 	
 	case(sourceSelect)
 	
-		3'b000 : LHSBusDriver = RegisterPortA;
+		3'b000 : LHSBusDriver = RegisterPortA;//Mem -> Base value for memory access
 		3'b001 : LHSBusDriver = ImediateValue;
 		3'b010 : LHSBusDriver = MemoryReadPort;
 		3'b011 : LHSBusDriver = 32'd0;
@@ -293,8 +303,8 @@ function [31:0] RHSBusDriver;
 	
 	case(sourceSelect)
 	
-		2'b00 : RHSBusDriver = RegisterPortB;
-		2'b01 : RHSBusDriver = ImediateValue;
+		2'b00 : RHSBusDriver = RegisterPortB;//Mem -> Store Source
+		2'b01 : RHSBusDriver = ImediateValue;//Mem -> Load/Store offset 
 		2'b10 : RHSBusDriver = MemoryReadPort;
 		2'b11 : RHSBusDriver = 32'd4;
 	

@@ -1,4 +1,4 @@
-/*
+
 
 module TrashbinSOC(
 
@@ -61,4 +61,3 @@ TrashbinCore Core(
 
 
 endmodule
-*/
