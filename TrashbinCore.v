@@ -75,11 +75,31 @@ end
 reg [31:0] ProgramCounter;
 initial ProgramCounter = 32'd0;
 
+wire IsBranchTaken = ALU_Comparisons[BranchCondition];
+
 always@ (posedge CoreClock)
 begin
 	if(CPU_PHASE == 3)
 	begin
-		ProgramCounter <= ProgramCounter+4;
+	
+		if(IsBranchInstruction && IsBranchTaken)
+		begin
+			ProgramCounter <= ProgramCounter + DecodedImediate;
+		
+		end else if(IsJumpInstruction) begin
+		
+			if(JumpMode) begin 
+			//JARL
+				ProgramCounter <= RegisterReadPortA + DecodedImediate;			
+			end else begin
+			//JAL
+				ProgramCounter <= ProgramCounter + DecodedImediate;
+			end
+			
+		end else begin
+			ProgramCounter <= ProgramCounter+4;
+		end
+	
 	end
 end
 
@@ -141,12 +161,14 @@ RegisterFile registerFile
 wire [31:0] LHS;
 wire [31:0] RHS;
 wire [31:0] ALU_Result;
+wire [5:0] ALU_Comparisons;
 wire [3:0] ALU_Func;
 
 ALU alu(
 	LHS,
 	RHS,
 	ALU_Result,
+	ALU_Comparisons,
 	ALU_Func
 );
 
@@ -162,9 +184,15 @@ wire InvalidInstruction;
 	wire [31:0] DecodedImediate;
 	
 	//Control outputs
-	wire [1:0] LHSSource;
+	wire [2:0] LHSSource;
 	wire [1:0] RHSSource;
-
+	
+	wire IsBranchInstruction;
+	wire [2:0] BranchCondition;
+	
+	wire IsJumpInstruction;
+	wire JumpMode; //0 == JAL, 1 == JALR
+	
 
 InstructionDecoder instructionDecoder(
 	CurrentInstruction,
@@ -181,6 +209,12 @@ InstructionDecoder instructionDecoder(
 	WritesRegisterFile,
 	WritesRam,
 	ReadsRam,
+	
+	IsBranchInstruction,
+	BranchCondition,
+	
+	IsJumpInstruction,
+	JumpMode,
 		
 	InvalidInstruction
 );
@@ -208,24 +242,28 @@ assign LHS = LHSBusDriver(
 	
 	RegisterReadPortA,
 	DecodedImediate,
-	DataReadBus
+	DataReadBus,
+	ProgramCounter
+
 );
 
 function [31:0] LHSBusDriver;
-	input [1:0] sourceSelect;
+	input [2:0] sourceSelect;
 
 	input [31:0] RegisterPortA;
 	input [31:0] ImediateValue;
 	input [31:0] MemoryReadPort;
-	
+	input [31:0] ProgramCounter;
+
 	begin
 	
 	case(sourceSelect)
 	
-		2'b00 : LHSBusDriver = RegisterPortA;
-		2'b01 : LHSBusDriver = ImediateValue;
-		2'b10 : LHSBusDriver = MemoryReadPort;
-		2'b11 : LHSBusDriver = 32'd0;
+		3'b000 : LHSBusDriver = RegisterPortA;
+		3'b001 : LHSBusDriver = ImediateValue;
+		3'b010 : LHSBusDriver = MemoryReadPort;
+		3'b011 : LHSBusDriver = 32'd0;
+		3'b100 : LHSBusDriver = ProgramCounter;
 	
 		default : LHSBusDriver = 32'd0;
 	endcase
@@ -258,6 +296,7 @@ function [31:0] RHSBusDriver;
 		2'b00 : RHSBusDriver = RegisterPortB;
 		2'b01 : RHSBusDriver = ImediateValue;
 		2'b10 : RHSBusDriver = MemoryReadPort;
+		2'b11 : RHSBusDriver = 32'd4;
 	
 		default : RHSBusDriver = 32'd0;
 	endcase

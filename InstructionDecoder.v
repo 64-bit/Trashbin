@@ -12,7 +12,7 @@ module InstructionDecoder(
 	output reg [31:0] DecodedImediate,
 	
 	//Control outputs
-	output reg [1:0] LHSsource,
+	output reg [2:0] LHSsource,
 	output reg [1:0] RHSsource,
 	output reg [3:0] ALUOperation,
 	
@@ -22,6 +22,13 @@ module InstructionDecoder(
 	output reg WritesRegisterFile,
 	output reg WritesRam,
 	output reg ReadsRam,
+	
+	output reg IsBranchInstruction,
+	output reg [2:0] BranchCondition,
+	
+	output reg IsJumpInstruction,
+	output reg JumpMode,
+		
 
 	//Error handling / debug signals
 	output reg InvalidInstructionSignal
@@ -78,12 +85,18 @@ always @ (*) begin
 
 	InvalidInstructionSignal <= 1'b0;
 	DecodedImediate <= 32'd0;
-	LHSsource <= 2'd0;	
+	LHSsource <= 3'd0;	
 	RHSsource <= 2'd0;	
 
 	ALUOperation <= 4'd0;
 	
 	WritesRegisterFile <= 0;
+	
+	IsBranchInstruction <= 0;
+	BranchCondition <= 3'd0;
+	
+	IsJumpInstruction <= 0;
+	JumpMode <= 0;//0 == JAL, 1 == JARL
 
 	casez (opcode)
 		
@@ -94,7 +107,7 @@ always @ (*) begin
 		//Encode as
 		DecodedImediate <= immediate_U_typeSignExtended;
 		ALUOperation <= 4'b0111;//AND, allows passthrough
-		LHSsource <= 2'd1;//Fully Decoded Imediate	
+		LHSsource <= 3'd1;//Fully Decoded Imediate	
 		RHSsource <= 2'd1;//Fully Decoded Imediate	
 		WritesRegisterFile <= 1;
 
@@ -110,7 +123,7 @@ always @ (*) begin
 		DecodedImediate <= immediate_I_typeSignExtended;
 		
 		//All ops use the same read/write ports
-		LHSsource <= 2'd0;//Register file read port A	
+		LHSsource <= 3'd0;//Register file read port A	
 		RHSsource <= 2'd1;//Fully Decoded Imediate	
 		WritesRegisterFile <= 1;
 		
@@ -146,7 +159,7 @@ always @ (*) begin
 		//All ops can directly consume this concatinated thing into the ALU
 		ALUOperation <= {Instruction[30] ,funct3};
 		//All ops use the same read/write ports
-		LHSsource <= 2'd0;	
+		LHSsource <= 3'd0;	
 		RHSsource <= 2'd0;	
 		WritesRegisterFile <= 1;
 
@@ -182,6 +195,72 @@ always @ (*) begin
 		end
 		//END OP
 		
+		
+		
+		
+		
+		//BEGIN BRANCH
+		7'b11000?? : begin
+		DecodedImediate <= immediate_B_typeSignExtended;
+		ALUOperation <= 4'b0000;//Don't Care, compare always active
+		LHSsource <= 3'd0;//Fully Decoded Imediate	
+		RHSsource <= 2'd0;//Fully Decoded Imediate	
+		IsBranchInstruction <= 1;
+		
+		case(funct3)
+		3'b000 : BranchCondition <= 3'd0;//==
+		3'b001 : BranchCondition <= 3'd1;//!=
+		3'b100 : BranchCondition <= 3'd3;//<
+		3'b101 : BranchCondition <= 3'd5;//>=
+		3'b110 : BranchCondition <= 3'd2;//unsigned <
+		3'b111 : BranchCondition <= 3'd4;//unsigned >=
+		
+		
+		default: begin InvalidInstructionSignal <= 1'b1; end
+		endcase		
+		end
+		//END BRANCH
+		
+		
+		
+		
+		
+		//BEGIN JAL
+		7'b11011?? : begin
+		
+		DecodedImediate <= immediate_J_typeSignExtended;
+		ALUOperation <= 4'b0000;//Add, to add 4 to the Program counter
+
+		LHSsource <= 3'd4;//Program Counter
+		RHSsource <= 2'd3;//4
+		
+		IsJumpInstruction <= 1;
+		JumpMode <= 0;//0 == JAL, 1 == JARL
+		
+		WritesRegisterFile <= 1;
+		end
+		//END JAL
+		
+		
+		
+		
+		
+		
+		//BEGIN JARL
+		7'b11001?? : begin
+		
+		DecodedImediate <= immediate_I_typeSignExtended;
+		ALUOperation <= 4'b0000;//Add, to add 4 to the Program counter
+
+		LHSsource <= 2'd4;//Program Counter
+		RHSsource <= 2'd3;//4
+		
+		IsJumpInstruction <= 1;
+		JumpMode <= 1;//0 == JAL, 1 == JARL
+		
+		WritesRegisterFile <= 1;	
+		end
+		//END JARL
 		
 		
 

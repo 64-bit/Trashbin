@@ -3,11 +3,8 @@ addi x2, x0, 2
 addi x3, x0, 3
 addi x4, x0, 4
 
-
-
 add, x0,x0, x0
 add, x0,x0, x0
-
 
 add x0, x3, x4
 sub x0, x4, x3

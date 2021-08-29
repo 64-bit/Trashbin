@@ -4,6 +4,7 @@ input [31:0] LHS,
 input [31:0] RHS,
 
 output [31:0] Result,
+output [5:0] Comparisons,
 
 input [3:0] Function,
 
@@ -11,8 +12,19 @@ input Clock
 
 );
 
-/*
 
+wire Comparison_Equal = LHS == RHS;
+wire Comparison_NotEqual = !Comparison_Equal;
+wire Comparison_LessThanUnsigned = LHS < RHS;
+wire Comparison_LessThanSigned = $signed(LHS) < $signed(RHS);
+wire Comparison_GreaterEqualsUnsigned = !Comparison_LessThanUnsigned;
+wire Comparison_GreaterEqualsSigned = !Comparison_LessThanSigned;
+
+assign Comparisons = {Comparison_Equal, Comparison_NotEqual,
+ Comparison_LessThanUnsigned, Comparison_LessThanSigned,
+ Comparison_GreaterEqualsUnsigned, Comparison_GreaterEqualsSigned};
+
+/*
 	ALU Functino mappings
 	0000 -> Add
 	1000 -> Subtract
@@ -24,11 +36,7 @@ input Clock
 	1101 -> SRA
 	0110 -> OR
 	0111 -> AND
-
-
-
 */
-
 
 
 function [31:0] ALU_Logic;
@@ -37,10 +45,6 @@ function [31:0] ALU_Logic;
 	input [3:0] func;
 	begin
 	
-	//wire signed [31:0] lhs_signed = lhs;
-	//wire signed [31:0] rhs_signed = rhs;
-	
-	
 	case(func)
 	
 		4'b0000 : ALU_Logic = LHS + RHS;
@@ -48,8 +52,8 @@ function [31:0] ALU_Logic;
 		
 		4'b0001 : ALU_Logic = LHS << RHS[4:0];
 		
-		4'b0010 : ALU_Logic = {31'd0, $signed(lhs) < $signed(rhs)}; //Set Less than
-		4'b0011 : ALU_Logic = {31'd0, lhs < rhs}; //Set Less than unsigned
+		4'b0010 : ALU_Logic = {31'd0, Comparison_LessThanSigned}; //Set Less than
+		4'b0011 : ALU_Logic = {31'd0, Comparison_LessThanUnsigned}; //Set Less than unsigned
 		
 		
 		4'b0100 : ALU_Logic = LHS ^ RHS;
