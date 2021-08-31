@@ -252,9 +252,7 @@ always @ (*) begin
 		//END JAL
 		
 		
-		
-		
-		
+			
 		
 		//BEGIN JARL
 		7'b11001?? : begin
@@ -271,6 +269,8 @@ always @ (*) begin
 		WritesRegisterFile <= 1;	
 		end
 		//END JARL
+		
+		
 		
 		
 

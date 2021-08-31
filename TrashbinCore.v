@@ -7,6 +7,7 @@ output wire [31:0] DebugData,
 
 
 //Memory
+/*
 output reg [31:0] AddressBus,
 input wire [31:0] DataReadBus,
 output wire [31:0] DataWriteBus,
@@ -15,14 +16,31 @@ output wire WriteAssert,
 
 input wire ReadOK,
 input wire WriteOK
+*/
+
+CpuDataInterface coreMemoryInterface
+
 
 
 );
 
 
-assign WriteAssert = 0;
+//Memory interface binding stuff
 
-assign DebugData[0] = DataReadBus[0];
+//output reg [31:0] AddressBus,
+//input wire [31:0] DataReadBus,
+//output wire [31:0] DataWriteBus,
+
+//output wire WriteAssert,
+
+//input wire ReadOK,
+//input wire WriteOK
+
+
+
+assign coreMemoryInterface.WriteAssert = 0;
+
+assign DebugData[0] = coreMemoryInterface.DataReadBus[0];
 
 //assign DebugData[31:1] = CurrentInstruction[31:1];
 assign DebugData[31:1] = RegisterReadPortA[31:1];
@@ -55,7 +73,7 @@ begin
 	begin	
 		CPU_PHASE <= 0;		
 	end else if(CPU_PHASE == 1) begin
-		if(ReadOK == 1)
+		if(coreMemoryInterface.ReadOK == 1)
 		begin
 			CPU_PHASE <= CPU_PHASE + 1;		
 		end
@@ -111,7 +129,7 @@ always@ (posedge CoreClock)
 begin
 	if(CPU_PHASE == 1)
 	begin
-		CurrentInstruction <= DataReadBus;
+		CurrentInstruction <= coreMemoryInterface.DataReadBus;
 	end
 end
 
@@ -234,7 +252,7 @@ InstructionDecoder instructionDecoder(
 always@ (*)
 begin
 
-	AddressBus <= { 2'b00, ProgramCounter[31:2]};
+	coreMemoryInterface.AddressBus <= { 2'b00, ProgramCounter[31:2]}; //TODO:MOVE THIS TO MEMORY CONTROLLER HOLY SHIT
 	//TODO:Load & Store
 end
 
@@ -252,7 +270,7 @@ assign LHS = LHSBusDriver(
 	
 	RegisterReadPortA,
 	DecodedImediate,
-	DataReadBus,
+	coreMemoryInterface.DataReadBus,
 	ProgramCounter
 
 );
@@ -289,7 +307,7 @@ assign RHS = RHSBusDriver(
 	
 	RegisterReadPortB,
 	DecodedImediate,
-	DataReadBus
+	coreMemoryInterface.DataReadBus
 );
 
 function [31:0] RHSBusDriver;

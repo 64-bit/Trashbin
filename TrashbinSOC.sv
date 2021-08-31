@@ -34,7 +34,21 @@ begin
 	StartupSignal <= 1'd1;
 end
 
+
 CpuDataInterface cpuDataInterface();
+
+FirstMemoryController firstMemoryController(
+
+	CoreClock,
+
+	cpuDataInterface.MemoryController,
+	
+	AddressBus,
+	DataWriteBus,
+	WriteAssert,
+	DataReadBus
+);
+
 
 TempRam datRam(
 	AddressBus[13:0],
@@ -48,15 +62,17 @@ TrashbinCore Core(
 	CoreClock,
 	DebugData,
 	
+	cpuDataInterface.CPU
+	
 	//Memory bus
-	AddressBus,
-	DataReadBus,
-	DataWriteBus,
-	WriteAssert,
+	//AddressBus,
+	//DataReadBus,
+	//DataWriteBus,
+	//WriteAssert,
 	
 	
-	1'b1, //Read OK
-	1'b1 //Write OK
+	//1'b1, //Read OK
+	//1'b1 //Write OK
 );
 
 
