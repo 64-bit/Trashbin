@@ -260,7 +260,7 @@ always @ (*) begin
 		DecodedImediate <= immediate_I_typeSignExtended;
 		ALUOperation <= 4'b0000;//Add, to add 4 to the Program counter
 
-		LHSsource <= 2'd4;//Program Counter
+		LHSsource <= 3'd4;//Program Counter
 		RHSsource <= 2'd3;//4
 		
 		IsJumpInstruction <= 1;
@@ -271,9 +271,82 @@ always @ (*) begin
 		//END JARL
 		
 		
-		
-		
 
+		//output reg [1:0] MemoryAccessWidth,
+		//output reg MemoryAccessSignExtend,
+		
+		//MemoryAccessWidth <= 2'd0; //0 == 1 byte, 1 == 2 bytes, 2 == 4 bytes
+		//MemoryAccessSignExtend <= 0; //0 = zero extend, 1 = sign extend
+		
+		//Begin LOAD
+		7'b00000?? : begin
+			DecodedImediate <= immediate_I_typeSignExtended;
+			IsMemoryRead <= 1;
+			WritesRegisterFile <= 1;	
+			LHSsource <= 3'd0;//Register file read port A			
+			RHSsource <= 2'd1;//Fully decoded Imediate	
+			
+			ALUOperation <= 4'd0;//ADD, Use ALU to calculate address	
+		
+			//TODO:Funct options
+			case(funct3)
+			
+				3'b000 : begin//Load Byte
+					MemoryAccessWidth <= 2'd0;
+					MemoryAccessSignExtend <= 1'd1;
+				end
+				3'b001 : begin//Load Half
+					MemoryAccessWidth <= 2'd1;
+					MemoryAccessSignExtend <= 1'd1;					
+				end
+				3'b010 : begin//Load Word
+					MemoryAccessWidth <= 2'd2;
+					MemoryAccessSignExtend <= 1'd1;					
+				end
+				3'b100 : begin//Load Byte Unsigned
+					MemoryAccessWidth <= 2'd0;
+					MemoryAccessSignExtend <= 1'd0;					
+				end
+				3'b101 : begin//Load Half Unsigned
+					MemoryAccessWidth <= 2'd1;
+					MemoryAccessSignExtend <= 1'd0;					
+				end		
+			
+				default : InvalidInstructionSignal <= 1'b1;			
+			endcase
+		end
+		//End LOAD
+		//
+		
+		
+		//--------------------------------------
+		//--------------------------------------
+		//Begin Store
+		7'b01000?? : begin
+			DecodedImediate <= immediate_S_typeSignExtended;
+			IsMemoryWrite <= 1;
+			LHSsource <= 3'd0;//Register file read port A		
+			RHSsource <= 2'd1;//Fully decoded Imediate
+			ALUOperation <= 4'd0;//ADD, Use ALU to calculate address
+			
+			//TODO:Funct options
+			case(funct3)
+				3'b000 : begin//Load Byte
+					MemoryAccessWidth <= 2'd0;
+				end
+				3'b001 : begin//Load Half
+					MemoryAccessWidth <= 2'd1;
+				end
+				3'b010 : begin//Load Word
+					MemoryAccessWidth <= 2'd2;
+				end
+				default : InvalidInstructionSignal <= 1'b1;			
+			endcase
+		end
+		//End Store------------------------------
+		//--------------------------------------
+		
+		
 		default: begin	
 			InvalidInstructionSignal <= 1'b1;		
 		end

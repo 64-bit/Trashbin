@@ -38,7 +38,7 @@ CpuDataInterface coreMemoryInterface
 
 
 
-assign coreMemoryInterface.WriteAssert = 0;
+assign coreMemoryInterface.WriteAssert = CPU_PHASE == 2 & IsMemoryWrite;
 
 assign DebugData[0] = coreMemoryInterface.DataReadBus[0];
 
@@ -78,12 +78,16 @@ begin
 			CPU_PHASE <= CPU_PHASE + 1;		
 		end
 	end else if(CPU_PHASE == 2) begin
+	
 		if(InvalidInstruction == 1)
 		begin		
 			//OH SHIT we hard locked
 		end else begin
 			CPU_PHASE <= CPU_PHASE + 1;		
 		end
+		
+		//TODO:Strech phase 3 until load/store is finished
+		
 	end else begin
 		CPU_PHASE <= CPU_PHASE + 1;
 	end
@@ -252,7 +256,15 @@ InstructionDecoder instructionDecoder(
 always@ (*)
 begin
 
-	coreMemoryInterface.AddressBus <= { 2'b00, ProgramCounter[31:2]}; //TODO:MOVE THIS TO MEMORY CONTROLLER HOLY SHIT
+	if((CPU_PHASE == 2 | CPU_PHASE == 3) & (IsMemoryWrite | IsMemoryRead))
+	begin
+		//This is a load-store operation, drive this via the ALU result
+		coreMemoryInterface.AddressBus <= ALU_Result[31:0];
+	end else begin
+		//If not in load-store phase of a load store instruction, drive via program counter
+		coreMemoryInterface.AddressBus <= ProgramCounter[31:0];
+	end
+
 	//TODO:Load & Store
 end
 
@@ -334,21 +346,23 @@ endfunction
 
 //Register write bus driver
 assign RegisterWriteData = RegisterWriteBusDriver(
-	2'b00,	
-	ALU_Result
+	{1'b0, IsMemoryRead},	
+	ALU_Result,
+	coreMemoryInterface.DataReadBus
 );
 
 function [31:0] RegisterWriteBusDriver;
 	input [1:0] sourceSelect;
 
 	input [31:0] ALUResult;
+	input [31:0] MemoryReadBus;
 	
 	begin
 	
 	case(sourceSelect)
 	
 		2'b00 : RegisterWriteBusDriver = ALUResult;
-
+		2'b01 : RegisterWriteBusDriver = MemoryReadBus;
 	
 		default : RegisterWriteBusDriver = 32'd0;
 	endcase
