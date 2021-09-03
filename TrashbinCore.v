@@ -39,6 +39,7 @@ CpuDataInterface coreMemoryInterface
 
 
 assign coreMemoryInterface.WriteAssert = CPU_PHASE == 2 & IsMemoryWrite;
+assign coreMemoryInterface.DataWriteBus = RegisterReadPortB;//Data can only be written from ReadPortB
 
 assign DebugData[0] = coreMemoryInterface.DataReadBus[0];
 

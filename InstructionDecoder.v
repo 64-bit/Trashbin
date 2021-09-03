@@ -213,8 +213,8 @@ always @ (*) begin
 		7'b11000?? : begin
 		DecodedImediate <= immediate_B_typeSignExtended;
 		ALUOperation <= 4'b0000;//Don't Care, compare always active
-		LHSsource <= 3'd0;//Fully Decoded Imediate	
-		RHSsource <= 2'd0;//Fully Decoded Imediate	
+		LHSsource <= 3'd0;//RS1
+		RHSsource <= 2'd0;//RS2
 		IsBranchInstruction <= 1;
 		
 		case(funct3)
@@ -279,7 +279,7 @@ always @ (*) begin
 		//MemoryAccessSignExtend <= 0; //0 = zero extend, 1 = sign extend
 		
 		//Begin LOAD
-		7'b00000?? : begin
+		7'b0000011 : begin
 			DecodedImediate <= immediate_I_typeSignExtended;
 			IsMemoryRead <= 1;
 			WritesRegisterFile <= 1;	

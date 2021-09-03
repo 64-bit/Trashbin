@@ -19,11 +19,10 @@ wire Comparison_LessThanUnsigned = LHS < RHS;
 wire Comparison_LessThanSigned = $signed(LHS) < $signed(RHS);
 wire Comparison_GreaterEqualsUnsigned = !Comparison_LessThanUnsigned;
 wire Comparison_GreaterEqualsSigned = !Comparison_LessThanSigned;
-
-assign Comparisons = {Comparison_Equal, Comparison_NotEqual,
- Comparison_LessThanUnsigned, Comparison_LessThanSigned,
- Comparison_GreaterEqualsUnsigned, Comparison_GreaterEqualsSigned};
-
+ 
+ //Remeber, not index order, but 'wire order'
+ assign Comparisons = {Comparison_GreaterEqualsSigned, Comparison_GreaterEqualsUnsigned, Comparison_LessThanSigned, Comparison_LessThanUnsigned, Comparison_NotEqual, Comparison_Equal};
+ 
 /*
 	ALU Functino mappings
 	0000 -> Add
