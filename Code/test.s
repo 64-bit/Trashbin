@@ -1,24 +1,25 @@
 addi x1, x0, 1
-addi x2, x0, 2
-addi x3, x0, 3
-addi x4, x0, 4
+sw x1, 1000(x0)
 
-bne x0, x1, skip
+addi x1, x0, 2
+sw x1, 1004(x0)
 
-addi x5, x0, 10
-addi x5, x0, 10
+addi x1, x0, 3
+sw x1, 1008(x0)
 
-skip: 
+addi x1, x0, 4
+sw x1, 1012(x0) 
 
-addi x5, x0, 20
-addi x5, x0, 20
+addi x1, x0, 100
 
-beq x0, x1, dontskip
+lw x2, 1012(x0)
+add x0, x1, x2
 
-addi x5, x0, 30
-addi x5, x0, 30
+lw x2, 1008(x0) 
+add x0, x1, x2
 
-dontskip:
+lw x2, 1004(x0) 
+add x0, x1, x2
 
-addi x5, x0, 40
-addi x5, x0, 40
+lw x2, 1000(x0) 
+add x0, x1, x2
