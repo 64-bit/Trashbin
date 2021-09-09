@@ -49,8 +49,8 @@ assign DebugData[31:1] = RegisterReadPortA[31:1];
 //Main CPU Core, this should be separate from any memory system / L1 cache / on-die ram
 
 
-reg [4:0] CPU_PHASE;
-initial CPU_PHASE = 5'd0;
+reg [1:0] CPU_PHASE;
+initial CPU_PHASE = 2'd0;
 //Explain plz bro
 
 //Phase 0: Clock PC into memory, issue read
@@ -70,7 +70,7 @@ initial CPU_PHASE = 5'd0;
 always@ (posedge CoreClock)
 begin
 
-	if(CPU_PHASE == 4)
+	if(CPU_PHASE == 3)
 	begin	
 		CPU_PHASE <= 0;		
 	end else if(CPU_PHASE == 1) begin

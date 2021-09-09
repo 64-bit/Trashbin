@@ -29,9 +29,19 @@ wire WriteAssert;
 
 reg StartupSignal = 1'd0;
 
+reg StartupCounter = 1'd0;
+
 always @(posedge CoreClock)
 begin
-	StartupSignal <= 1'd1;
+	StartupCounter <= 1'd1;
+end
+
+
+always @(posedge CoreClock)
+begin
+	if(StartupCounter == 1) begin
+		StartupSignal <= 1'd1;
+	end
 end
 
 
