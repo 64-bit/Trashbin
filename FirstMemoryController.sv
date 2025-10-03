@@ -22,7 +22,13 @@ module FirstMemoryController(
 	output wire [13:0] AddressBus,
 	output wire [31:0] DataWriteBus,
 	output wire WriteAssert,
-	input wire [31:0] DataReadBus
+	input wire [31:0] DataReadBus,
+	
+	//Peripherial interface
+	output wire [13:0] AddressBus_P,
+	output wire [31:0] DataWriteBus_P,
+	output wire WriteAssert_P,
+	input wire [31:0] DataReadBus_P
 );
 
 //It would be really cool if this could keep it's single cycle read nature, at least for aligned reads/writes
@@ -37,18 +43,35 @@ assign cpuInterface.ReadOK = 1'b1;
 assign cpuInterface.WriteOK = 1'b1;
 
 assign AddressBus = cpuInterface.AddressBus[15:2];//TODO:Support for mis-aligned LS
+assign AddressBus_P = cpuInterface.AddressBus[15:2];//TODO:Support for mis-aligned LS
+
 assign DataWriteBus = cpuInterface.DataWriteBus;
+assign DataWriteBus_P = cpuInterface.DataWriteBus;
 
-assign WriteAssert = cpuInterface.WriteAssert;
+assign WriteAssert = cpuInterface.WriteAssert & !cpuInterface.AddressBus[16];
+assign WriteAssert_P = cpuInterface.WriteAssert & cpuInterface.AddressBus[16];
 
-assign cpuInterface.DataReadBus = DataReadBus;
-
-
-
-
+//assign cpuInterface.DataReadBus = DataReadBus;
 
 
-
+always@(*)
+begin
+cpuInterface.DataReadBus = DataReadBus;
+	case (cpuInterface.AddressBus[16])
+	
+		1'b0:	begin 
+		cpuInterface.DataReadBus = DataReadBus;
+		
+		
+		end
+		
+		1'b1: begin
+		cpuInterface.DataReadBus = DataReadBus_P;
+		
+		end	
+	
+	endcase
+end
 
 
 endmodule

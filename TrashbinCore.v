@@ -256,7 +256,9 @@ InstructionDecoder instructionDecoder(
 //Bus Drivers - Move to other files ???
 always@ (*)
 begin
-
+	//TODO:This may break the CPU
+	coreMemoryInterface.AddressBus <= 32'b0;
+	
 	if((CPU_PHASE == 2 | CPU_PHASE == 3) & (IsMemoryWrite | IsMemoryRead))
 	begin
 		//This is a load-store operation, drive this via the ALU result
@@ -302,7 +304,7 @@ function [31:0] LHSBusDriver;
 	
 		3'b000 : LHSBusDriver = RegisterPortA;//Mem -> Base value for memory access
 		3'b001 : LHSBusDriver = ImediateValue;
-		3'b010 : LHSBusDriver = MemoryReadPort;
+		//3'b010 : LHSBusDriver = MemoryReadPort;
 		3'b011 : LHSBusDriver = 32'd0;
 		3'b100 : LHSBusDriver = ProgramCounter;
 	
@@ -336,7 +338,7 @@ function [31:0] RHSBusDriver;
 	
 		2'b00 : RHSBusDriver = RegisterPortB;//Mem -> Store Source
 		2'b01 : RHSBusDriver = ImediateValue;//Mem -> Load/Store offset 
-		2'b10 : RHSBusDriver = MemoryReadPort;
+		//2'b10 : RHSBusDriver = MemoryReadPort;
 		2'b11 : RHSBusDriver = 32'd4;
 	
 		default : RHSBusDriver = 32'd0;

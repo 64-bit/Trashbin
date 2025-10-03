@@ -1,0 +1,146 @@
+
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 08 06PM:54:08>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 08 06PM:54:17>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 08 06PM:54:32>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 06PM:34:15>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 06PM:45:49>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:06>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:07>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:11>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:16>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:24>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:29>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:41>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:43>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:56>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:57>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:58>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:07:58>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:08:00>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:08:26>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:08:28>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:08:35>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:08:39>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:09:52>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:10:00>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:10:08>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:10:48>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 09 09PM:10:51>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Sep 17 05PM:25:33>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Oct 03 02PM:10:28>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

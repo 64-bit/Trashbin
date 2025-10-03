@@ -1,5 +1,5 @@
 
-# (C) 2001-2021 Altera Corporation. All rights reserved.
+# (C) 2001-2025 Altera Corporation. All rights reserved.
 # Your use of Altera Corporation's design tools, logic functions and 
 # other software and tools, and its AMPP partner logic functions, and 
 # any output files any of the foregoing (including device programming 
@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 20.1 711 win32 2021.08.29.23:17:26
+# ACDS 23.1 993 linux 2025.09.08.18:45:52
 
 # ----------------------------------------
 # vcs - auto-generated simulation script
@@ -94,12 +94,12 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 20.1 711 win32 2021.08.29.23:17:26
+# ACDS 23.1 993 linux 2025.09.08.18:45:52
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="CorePLL"
 QSYS_SIMDIR="./../../"
-QUARTUS_INSTALL_DIR="D:/intelfpga_lite/20.1/quartus/"
+QUARTUS_INSTALL_DIR="/home/FemboyWarlord/intelFPGA_lite/23.1std/quartus/"
 SKIP_FILE_COPY=0
 SKIP_SIM=0
 USER_DEFINED_ELAB_OPTIONS=""

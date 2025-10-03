@@ -189,7 +189,10 @@ TrashbinSOC SOCInstance(
  
 	LEDR[9:0],
 	LEDG[7:0],
-	HexDisplay
+	HexDisplay,
+	
+	SW,
+	KEY
 );
 
 SevenSegment seg0(
