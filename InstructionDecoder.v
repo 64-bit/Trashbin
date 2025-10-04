@@ -124,6 +124,16 @@ always @ (*) begin
 		//end LUI
 		end
 		
+		//Begin auipc
+		7'b00101?? : begin	
+		DecodedImediate <= immediate_U_typeSignExtended;
+		ALUOperation <= 4'b0000; //ADD
+		LHSsource <= 3'b100; //Program Counter
+		RHSsource <= 2'd1;//Fully Decoded Imediate	
+		WritesRegisterFile <= 1;
+		end
+		//End auipc
+		
 		
 		//BEGIN OPI
 		7'b00100?? : begin	

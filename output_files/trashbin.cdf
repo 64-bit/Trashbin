@@ -1,10 +1,10 @@
-/* Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition */
+/* Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition */
 JedecChain;
 	FileRevision(JESD32A);
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(5CGXFC5C6F27) Path("D:/Chips/trashbin/output_files/") File("trashbin.sof") MfrSpec(OpMask(1));
+		Device PartName(5CGXFC5C6F27) Path("/home/FemboyWarlord/repos/Trashbin/output_files/") File("trashbin.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

@@ -1,0 +1,18 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Release",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv",
+	"dir-cur-src" : "/home/FemboyWarlord/repos/Trashbin/Code",
+	"dir-top-bld" : "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv",
+	"dir-top-src" : "/home/FemboyWarlord/repos/Trashbin/Code",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/firmware.dir"
+}

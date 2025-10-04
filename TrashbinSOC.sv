@@ -16,6 +16,7 @@ input wire [3:0] w_Keys
 
 wire [31:0] DebugData;
 
+wire [7:0] DummyGreen;
 
 //assign LEDS[9:0] = DebugData[29:20];
 //assign LEDS_G[0] = DebugData[0];
@@ -55,6 +56,8 @@ begin
 	end
 end
 
+assign w_LED_Green[0] = StartupCounter;
+assign w_LED_Green[7:1] = DebugData[6:0];
 
 CpuDataInterface cpuDataInterface();
 
@@ -110,7 +113,7 @@ BasicGPIO GPIO_Controller(
 	DataWriteBus_P,
 	WriteAssert_P,
 
-	w_LED_Green,
+	DummyGreen,
 	W_LED_Red,
 	w_HexDisplay,
 	

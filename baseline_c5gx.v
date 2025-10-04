@@ -187,8 +187,8 @@ TrashbinSOC SOCInstance(
 
  coreClock,
  
+ 	LEDG[7:0],
 	LEDR[9:0],
-	LEDG[7:0],
 	HexDisplay,
 	
 	SW,

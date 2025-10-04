@@ -1,0 +1,3 @@
+/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/CMakeFiles/firmware.dir
+/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/CMakeFiles/rebuild_cache.dir

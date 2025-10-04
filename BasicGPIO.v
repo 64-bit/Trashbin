@@ -52,8 +52,8 @@ begin
 	case(AddressBus[15:0])
 
 	16'h0000: DataReadRegister[15:0] <= LED_Green;
-	16'h0004: DataReadRegister[15:0] <= LED_Red;
-	16'h0008: DataReadRegister[15:0] <= HexDisplay;
+	16'h0001: DataReadRegister[15:0] <= LED_Red;
+	16'h0002: DataReadRegister[15:0] <= HexDisplay;
 	
 	16'h1000: DataReadRegister[15:0] <= Switches;
 	16'h1004: DataReadRegister[15:0] <= Keys;
@@ -69,8 +69,8 @@ begin
 		case(AddressBus[15:0])
  
 			16'h0000: LED_Green <= DataWriteBus[15:0];
-			16'h0004: LED_Red <= DataWriteBus[15:0];
-			16'h0008: HexDisplay <= DataWriteBus[15:0];
+			16'h0001: LED_Red <= DataWriteBus[15:0];
+			16'h0002: HexDisplay <= DataWriteBus[15:0];
  
 		endcase
 	end

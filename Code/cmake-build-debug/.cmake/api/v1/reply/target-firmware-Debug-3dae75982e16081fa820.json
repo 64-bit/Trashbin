@@ -1,0 +1,175 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "firmware"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_options",
+			"target_compile_options"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-march=rv32i"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mabi=ilp32"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-march=rv32i"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mabi=ilp32"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"id" : "firmware::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-T",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/FemboyWarlord/repos/Trashbin/Code/linker.ld",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-nostdlib",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-ffreestanding",
+				"role" : "flags"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "firmware",
+	"nameOnDisk" : "firmware",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "crt0.S",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "EXECUTABLE"
+}

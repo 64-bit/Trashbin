@@ -1,0 +1,3 @@
+/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/firmware.dir
+/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/edit_cache.dir
+/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/rebuild_cache.dir

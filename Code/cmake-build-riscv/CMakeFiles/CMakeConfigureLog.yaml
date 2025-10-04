@@ -1,0 +1,366 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The target system is: Generic -  - riscv32
+      The host system is: Linux - 6.16.7-arch1-1 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /usr/bin/riscv64-unknown-elf-gcc 
+      Build flags: -march=rv32i;-mabi=ilp32;-ffreestanding
+      Id flags:  
+      
+      The output was:
+      1
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find crt0.o: No such file or directory
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find -lc: No such file or directory
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find -lgloss: No such file or directory
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/riscv64-unknown-elf-gcc 
+      Build flags: -march=rv32i;-mabi=ilp32;-ffreestanding
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/3.29.6/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /usr/bin/riscv64-unknown-elf-g++ 
+      Build flags: -march=rv32i;-mabi=ilp32;-ffreestanding;-fno-exceptions;-fno-rtti
+      Id flags:  
+      
+      The output was:
+      1
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find crt0.o: No such file or directory
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find -lstdc++: No such file or directory
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find -lm: No such file or directory
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find -lc: No such file or directory
+      /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/ld: cannot find -lgloss: No such file or directory
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/riscv64-unknown-elf-g++ 
+      Build flags: -march=rv32i;-mabi=ilp32;-ffreestanding;-fno-exceptions;-fno-rtti
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-ZdcT4h"
+      binary: "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-ZdcT4h"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-march=rv32i -mabi=ilp32 -ffreestanding"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-nostdlib -ffreestanding"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-ZdcT4h'
+        
+        Run Build Command(s): /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/ninja/linux/x64/ninja -v cmTC_91bc1
+        [1/2] /usr/bin/riscv64-unknown-elf-gcc   -march=rv32i -mabi=ilp32 -ffreestanding  -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj -c /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/riscv64-unknown-elf-gcc
+        Target: riscv64-unknown-elf
+        Configured with: /home/FemboyWarlord/.cache/yay/riscv64-unknown-elf-gcc/src/gcc-14.2.0/configure 'CFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' 'CXXFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' --target=riscv64-unknown-elf --prefix=/usr --with-sysroot=/usr/riscv64-unknown-elf --with-native-system-header-dir=/include --libexecdir=/usr/lib --enable-languages=c,c++ --enable-plugins --enable-multilib --disable-decimal-float --disable-libffi --enable-checking=yes --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx --disable-fixinc --disable-nls --disable-shared --disable-threads --disable-werror --enable-tls --with-gnu-as --with-gnu-ld --with-system-zlib --with-newlib --with-headers=/usr/riscv64-unknown-elf/include --with-python-dir=share/gcc-riscv64-unknown-elf --with-gmp --with-mpfr --with-mpc --with-isl --with-libelf --with-arch=rv64imafdc --with-abi=lp64d --with-pkgversion='Arch User Repository'
+        Thread model: single
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 14.2.0 (Arch User Repository) 
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-v' '-o' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_91bc1.dir/'
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/cc1 -quiet -v -imultilib rv32i/ilp32 /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_91bc1.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32i -mabi=ilp32 -misa-spec=20191213 -march=rv32i -version -fdiagnostics-color=always -ffreestanding -o /tmp/ccWPzrnJ.s
+        GNU C17 (Arch User Repository) version 14.2.0 (riscv64-unknown-elf)
+        	compiled by GNU C version 15.2.1 20250813, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        GGC heuristics: --param ggc-min-expand=30 --param ggc-min-heapsize=4096
+        ignoring nonexistent directory "/usr/riscv64-unknown-elf/usr/local/include"
+        ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include"
+        ignoring nonexistent directory "/usr/riscv64-unknown-elf/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed
+        End of search list.
+        Compiler executable checksum: f15a162ab44e0cb693eb3345354a9f31
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-v' '-o' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_91bc1.dir/'
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/as -v --traditional-format -march=rv32i -march=rv32i -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj /tmp/ccWPzrnJ.s
+        GNU assembler version 2.43.1 (riscv64-unknown-elf) using BFD version (GNU Binutils) 2.43.1
+        COMPILER_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/
+        LIBRARY_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/:/usr/riscv64-unknown-elf/lib/
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-v' '-o' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.'
+        [2/2] : && /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -E rm -f libcmTC_91bc1.a && /usr/bin/riscv64-unknown-elf-ar qc libcmTC_91bc1.a  CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj && /usr/bin/riscv64-unknown-elf-ranlib libcmTC_91bc1.a && :
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:137 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include]
+          add: [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include] ==> [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include]
+        collapse include dir [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed] ==> [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+        implicit include dirs: [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include;/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-ZdcT4h']
+        ignore line: []
+        ignore line: [Run Build Command(s): /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/ninja/linux/x64/ninja -v cmTC_91bc1]
+        ignore line: [[1/2] /usr/bin/riscv64-unknown-elf-gcc   -march=rv32i -mabi=ilp32 -ffreestanding  -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj -c /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/riscv64-unknown-elf-gcc]
+        ignore line: [Target: riscv64-unknown-elf]
+        ignore line: [Configured with: /home/FemboyWarlord/.cache/yay/riscv64-unknown-elf-gcc/src/gcc-14.2.0/configure 'CFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' 'CXXFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' --target=riscv64-unknown-elf --prefix=/usr --with-sysroot=/usr/riscv64-unknown-elf --with-native-system-header-dir=/include --libexecdir=/usr/lib --enable-languages=c,c++ --enable-plugins --enable-multilib --disable-decimal-float --disable-libffi --enable-checking=yes --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx --disable-fixinc --disable-nls --disable-shared --disable-threads --disable-werror --enable-tls --with-gnu-as --with-gnu-ld --with-system-zlib --with-newlib --with-headers=/usr/riscv64-unknown-elf/include --with-python-dir=share/gcc-riscv64-unknown-elf --with-gmp --with-mpfr --with-mpc --with-isl --with-libelf --with-arch=rv64imafdc --with-abi=lp64d --with-pkgversion='Arch User Repository']
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 14.2.0 (Arch User Repository) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-v' '-o' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_91bc1.dir/']
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/cc1 -quiet -v -imultilib rv32i/ilp32 /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_91bc1.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32i -mabi=ilp32 -misa-spec=20191213 -march=rv32i -version -fdiagnostics-color=always -ffreestanding -o /tmp/ccWPzrnJ.s]
+        ignore line: [GNU C17 (Arch User Repository) version 14.2.0 (riscv64-unknown-elf)]
+        ignore line: [	compiled by GNU C version 15.2.1 20250813  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=30 --param ggc-min-heapsize=4096]
+        ignore line: [ignoring nonexistent directory "/usr/riscv64-unknown-elf/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include"]
+        ignore line: [ignoring nonexistent directory "/usr/riscv64-unknown-elf/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include]
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: f15a162ab44e0cb693eb3345354a9f31]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-v' '-o' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_91bc1.dir/']
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/as -v --traditional-format -march=rv32i -march=rv32i -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj /tmp/ccWPzrnJ.s]
+        ignore line: [GNU assembler version 2.43.1 (riscv64-unknown-elf) using BFD version (GNU Binutils) 2.43.1]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/:/usr/riscv64-unknown-elf/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-v' '-o' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.']
+        ignore line: [[2/2] : && /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -E rm -f libcmTC_91bc1.a && /usr/bin/riscv64-unknown-elf-ar qc libcmTC_91bc1.a  CMakeFiles/cmTC_91bc1.dir/CMakeCCompilerABI.c.obj && /usr/bin/riscv64-unknown-elf-ranlib libcmTC_91bc1.a && :]
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-hAIobm"
+      binary: "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-hAIobm"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-march=rv32i -mabi=ilp32 -ffreestanding -fno-exceptions -fno-rtti"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "-nostdlib -ffreestanding"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-hAIobm'
+        
+        Run Build Command(s): /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/ninja/linux/x64/ninja -v cmTC_435bb
+        [1/2] /usr/bin/riscv64-unknown-elf-g++   -march=rv32i -mabi=ilp32 -ffreestanding -fno-exceptions -fno-rtti  -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj -c /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/riscv64-unknown-elf-g++
+        Target: riscv64-unknown-elf
+        Configured with: /home/FemboyWarlord/.cache/yay/riscv64-unknown-elf-gcc/src/gcc-14.2.0/configure 'CFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' 'CXXFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' --target=riscv64-unknown-elf --prefix=/usr --with-sysroot=/usr/riscv64-unknown-elf --with-native-system-header-dir=/include --libexecdir=/usr/lib --enable-languages=c,c++ --enable-plugins --enable-multilib --disable-decimal-float --disable-libffi --enable-checking=yes --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx --disable-fixinc --disable-nls --disable-shared --disable-threads --disable-werror --enable-tls --with-gnu-as --with-gnu-ld --with-system-zlib --with-newlib --with-headers=/usr/riscv64-unknown-elf/include --with-python-dir=share/gcc-riscv64-unknown-elf --with-gmp --with-mpfr --with-mpc --with-isl --with-libelf --with-arch=rv64imafdc --with-abi=lp64d --with-pkgversion='Arch User Repository'
+        Thread model: single
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 14.2.0 (Arch User Repository) 
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-fno-exceptions' '-fno-rtti' '-v' '-o' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_435bb.dir/'
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/cc1plus -quiet -v -imultilib rv32i/ilp32 /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_435bb.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32i -mabi=ilp32 -misa-spec=20191213 -march=rv32i -version -fdiagnostics-color=always -ffreestanding -fno-exceptions -fno-rtti -o /tmp/ccxxap4S.s
+        GNU C++17 (Arch User Repository) version 14.2.0 (riscv64-unknown-elf)
+        	compiled by GNU C version 15.2.1 20250813, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        GGC heuristics: --param ggc-min-expand=30 --param ggc-min-heapsize=4096
+        ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include/c++/14.2.0"
+        ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include/c++/14.2.0/riscv64-unknown-elf/rv32i/ilp32"
+        ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include/c++/14.2.0/backward"
+        ignoring nonexistent directory "/usr/riscv64-unknown-elf/usr/local/include"
+        ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include"
+        ignoring nonexistent directory "/usr/riscv64-unknown-elf/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed
+        End of search list.
+        Compiler executable checksum: fa17e141a617636a79c9b148296132d1
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-fno-exceptions' '-fno-rtti' '-v' '-o' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_435bb.dir/'
+         /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/as -v --traditional-format -march=rv32i -march=rv32i -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccxxap4S.s
+        GNU assembler version 2.43.1 (riscv64-unknown-elf) using BFD version (GNU Binutils) 2.43.1
+        COMPILER_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/
+        LIBRARY_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/:/usr/riscv64-unknown-elf/lib/
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-fno-exceptions' '-fno-rtti' '-v' '-o' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.'
+        [2/2] : && /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -E rm -f libcmTC_435bb.a && /usr/bin/riscv64-unknown-elf-ar qc libcmTC_435bb.a  CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj && /usr/bin/riscv64-unknown-elf-ranlib libcmTC_435bb.a && :
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:137 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include]
+          add: [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include] ==> [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include]
+        collapse include dir [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed] ==> [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+        implicit include dirs: [/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include;/usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv/CMakeFiles/CMakeScratch/TryCompile-hAIobm']
+        ignore line: []
+        ignore line: [Run Build Command(s): /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/ninja/linux/x64/ninja -v cmTC_435bb]
+        ignore line: [[1/2] /usr/bin/riscv64-unknown-elf-g++   -march=rv32i -mabi=ilp32 -ffreestanding -fno-exceptions -fno-rtti  -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj -c /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/riscv64-unknown-elf-g++]
+        ignore line: [Target: riscv64-unknown-elf]
+        ignore line: [Configured with: /home/FemboyWarlord/.cache/yay/riscv64-unknown-elf-gcc/src/gcc-14.2.0/configure 'CFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' 'CXXFLAGS_FOR_TARGET=-Os -mcmodel=medany -ffunction-sections -fdata-sections' --target=riscv64-unknown-elf --prefix=/usr --with-sysroot=/usr/riscv64-unknown-elf --with-native-system-header-dir=/include --libexecdir=/usr/lib --enable-languages=c,c++ --enable-plugins --enable-multilib --disable-decimal-float --disable-libffi --enable-checking=yes --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx --disable-fixinc --disable-nls --disable-shared --disable-threads --disable-werror --enable-tls --with-gnu-as --with-gnu-ld --with-system-zlib --with-newlib --with-headers=/usr/riscv64-unknown-elf/include --with-python-dir=share/gcc-riscv64-unknown-elf --with-gmp --with-mpfr --with-mpc --with-isl --with-libelf --with-arch=rv64imafdc --with-abi=lp64d --with-pkgversion='Arch User Repository']
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 14.2.0 (Arch User Repository) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-fno-exceptions' '-fno-rtti' '-v' '-o' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_435bb.dir/']
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/cc1plus -quiet -v -imultilib rv32i/ilp32 /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_435bb.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32i -mabi=ilp32 -misa-spec=20191213 -march=rv32i -version -fdiagnostics-color=always -ffreestanding -fno-exceptions -fno-rtti -o /tmp/ccxxap4S.s]
+        ignore line: [GNU C++17 (Arch User Repository) version 14.2.0 (riscv64-unknown-elf)]
+        ignore line: [	compiled by GNU C version 15.2.1 20250813  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=30 --param ggc-min-heapsize=4096]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include/c++/14.2.0"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include/c++/14.2.0/riscv64-unknown-elf/rv32i/ilp32"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include/c++/14.2.0/backward"]
+        ignore line: [ignoring nonexistent directory "/usr/riscv64-unknown-elf/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/include"]
+        ignore line: [ignoring nonexistent directory "/usr/riscv64-unknown-elf/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include]
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/include-fixed]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: fa17e141a617636a79c9b148296132d1]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-fno-exceptions' '-fno-rtti' '-v' '-o' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_435bb.dir/']
+        ignore line: [ /usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/as -v --traditional-format -march=rv32i -march=rv32i -mabi=ilp32 -misa-spec=20191213 -o CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccxxap4S.s]
+        ignore line: [GNU assembler version 2.43.1 (riscv64-unknown-elf) using BFD version (GNU Binutils) 2.43.1]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/riscv64-unknown-elf/14.2.0/rv32i/ilp32/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/:/usr/lib/gcc/riscv64-unknown-elf/14.2.0/../../../../riscv64-unknown-elf/lib/:/usr/riscv64-unknown-elf/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-march=rv32i' '-mabi=ilp32' '-ffreestanding' '-fno-exceptions' '-fno-rtti' '-v' '-o' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32i' '-dumpdir' 'CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [[2/2] : && /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -E rm -f libcmTC_435bb.a && /usr/bin/riscv64-unknown-elf-ar qc libcmTC_435bb.a  CMakeFiles/cmTC_435bb.dir/CMakeCXXCompilerABI.cpp.obj && /usr/bin/riscv64-unknown-elf-ranlib libcmTC_435bb.a && :]
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1165 (message)"
+      - "/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:5 (enable_language)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      riscv64-unknown-elf-gcc (Arch User Repository) 14.2.0
+      Copyright (C) 2024 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+...

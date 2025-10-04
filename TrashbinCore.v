@@ -41,11 +41,11 @@ CpuDataInterface coreMemoryInterface
 assign coreMemoryInterface.WriteAssert = CPU_PHASE == 2 & IsMemoryWrite;
 assign coreMemoryInterface.DataWriteBus = RegisterReadPortB;//Data can only be written from ReadPortB
 
-assign DebugData[0] = coreMemoryInterface.DataReadBus[0];
+//assign DebugData[0] = coreMemoryInterface.DataReadBus[0];
 
 //assign DebugData[31:1] = CurrentInstruction[31:1];
-assign DebugData[31:1] = RegisterReadPortA[31:1];
-
+//assign DebugData[31:1] = RegisterReadPortA[31:1];
+assign DebugData = ProgramCounter;
 //Main CPU Core, this should be separate from any memory system / L1 cache / on-die ram
 
 
@@ -224,7 +224,6 @@ wire InvalidInstruction;
 
 InstructionDecoder instructionDecoder(
 	CurrentInstruction,
-	
 	RD,
 	RS1,
 	RS2,
@@ -240,7 +239,6 @@ InstructionDecoder instructionDecoder(
 	
 	IsBranchInstruction,
 	BranchCondition,
-	
 	IsJumpInstruction,
 	JumpMode,
 	
@@ -257,7 +255,7 @@ InstructionDecoder instructionDecoder(
 always@ (*)
 begin
 	//TODO:This may break the CPU
-	coreMemoryInterface.AddressBus <= 32'b0;
+	//coreMemoryInterface.AddressBus <= 32'b0;
 	
 	if((CPU_PHASE == 2 | CPU_PHASE == 3) & (IsMemoryWrite | IsMemoryRead))
 	begin

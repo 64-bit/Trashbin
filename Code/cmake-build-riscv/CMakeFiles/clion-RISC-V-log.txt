@@ -1,0 +1,18 @@
+/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/ninja/linux/x64/ninja -DCMAKE_C_COMPILER=/usr/bin/riscv64-unknown-elf-gcc -DCMAKE_CXX_COMPILER=/usr/bin/riscv64-unknown-elf-g++ -DCMAKE_TOOLCHAIN_FILE=riscv_toolchain.cmake -G Ninja -S /home/FemboyWarlord/repos/Trashbin/Code -B /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/riscv64-unknown-elf-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/riscv64-unknown-elf-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/riscv64-unknown-elf-gcc
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv
