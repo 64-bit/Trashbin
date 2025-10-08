@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.29"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "Release",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "firmware::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-firmware-Debug-b8649e132d7d6c4e5f74.json",
+					"jsonFile" : "target-firmware-Release-9637379caddf01e6e8ba.json",
 					"name" : "firmware",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug",
+		"build" : "/home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv",
 		"source" : "/home/FemboyWarlord/repos/Trashbin/Code"
 	},
 	"version" : 

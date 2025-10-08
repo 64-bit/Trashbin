@@ -84,7 +84,7 @@ build firmware: CXX_EXECUTABLE_LINKER__firmware_Debug CMakeFiles/firmware.dir/cr
   FLAGS = -g
   LINK_FLAGS = -T /home/FemboyWarlord/repos/Trashbin/Code/linker.ld -nostdlib -ffreestanding
   OBJECT_DIR = CMakeFiles/firmware.dir
-  POST_BUILD = :
+  POST_BUILD = cd /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug && /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -E echo Running\ post-build\ tasks... && /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -E copy /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/firmware /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware.elf && riscv64-unknown-elf-objcopy --remove-section=.comment /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware.elf /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware_no_comments.elf && riscv64-unknown-elf-objdump -D /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware_no_comments.elf > dis.asm && riscv64-unknown-elf-objcopy -O ihex /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware_no_comments.elf /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware.hex --reverse-bytes=4 && python3 /home/FemboyWarlord/repos/Trashbin/Code/fixhex.py /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware.hex > /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-debug/output/firmware_fixed.hex
   PRE_LINK = :
   TARGET_FILE = firmware
   TARGET_PDB = firmware.dbg

@@ -3,38 +3,9 @@ module BasicGPIO(
 
 input CoreClock,
 
-
 MMPeripheralInterface.Peripheral	MemoryController,
 
-/*
-modport Peripheral(
-	input AddressBus,
-	output DataReadBus
-	input DataWriteBus
-	
-	input WriteAssert,
-	input ReadAssert,
-	
-	output WriteOK,
-	output ReadOK);
-*/
-
-
-/*
-input wire [31:0] AddressBus,
-output wire [31:0] DataReadBus,
-input wire [31:0] DataWriteBus,
-input WriteAssert,
-input ReadAssert,
-*/
-
-
-output wire [7:0] w_LED_Green,
-output wire [9:0] W_LED_Red,
-output wire [15:0] w_HexDisplay,
-
-input wire [9:0] w_Switches,
-input wire [3:0] w_Keys
+IOInterface IO
 );
 
 
@@ -52,15 +23,14 @@ assign MemoryController.WriteOK = 1'b1;
 assign MemoryController.ReadOK = 1'b1;
 
 //Always, drive output values from register
-assign w_LED_Green = LED_Green[7:0];
-assign W_LED_Red = LED_Red[9:0];
-assign w_HexDisplay = HexDisplay[15:0];
+assign IO.LED_Green = LED_Green[7:0];
+assign IO.LED_Red = LED_Red[9:0];
 
 //On every clock, latch the input values
 always@(posedge CoreClock)
 begin
-	Switches[9:0] <= w_Switches;
-	Keys[3:0] <= ~w_Keys;
+	Switches[9:0] <= IO.Switch;
+	Keys[3:0] <= ~IO.Key;
 end
 
 //Always, drive the data read bus with the correct register
@@ -94,6 +64,29 @@ begin
 		endcase
 	end
 end
+
+
+
+//7 Segment displays
+SevenSegment seg0(
+HexDisplay[3:0],
+IO.HEX0
+);
+
+SevenSegment seg1(
+HexDisplay[7:4],
+IO.HEX1
+);
+
+SevenSegment seg2(
+HexDisplay[11:8],
+IO.HEX2
+);
+
+SevenSegment seg3(
+HexDisplay[15:12],
+IO.HEX3
+);
 
 
 endmodule

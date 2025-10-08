@@ -1,10 +1,4 @@
 /home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=/home/FemboyWarlord/Downloads/CLion-2024/clion-2024.2.3/bin/ninja/linux/x64/ninja -DCMAKE_C_COMPILER=/usr/bin/riscv64-unknown-elf-gcc -DCMAKE_CXX_COMPILER=/usr/bin/riscv64-unknown-elf-g++ -DCMAKE_TOOLCHAIN_FILE=riscv_toolchain.cmake -G Ninja -S /home/FemboyWarlord/repos/Trashbin/Code -B /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
-CMake Warning:
-  Manually-specified variables were not used by the project:
-
-    CMAKE_TOOLCHAIN_FILE
-
-
 -- Build files have been written to: /home/FemboyWarlord/repos/Trashbin/Code/cmake-build-riscv

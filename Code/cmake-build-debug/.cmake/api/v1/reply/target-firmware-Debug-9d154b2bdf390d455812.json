@@ -32,13 +32,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 14,
+				"line" : 15,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 13,
+				"line" : 14,
 				"parent" : 0
 			}
 		]
@@ -49,7 +49,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-x assembler-with-cpp -march=rv32i -mabi=ilp32 -O3 -DNDEBUG"
+					"fragment" : "-g"
 				},
 				{
 					"backtrace" : 3,
@@ -70,7 +70,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-march=rv32i -mabi=ilp32 -ffreestanding -fno-exceptions -fno-rtti -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
 				},
 				{
 					"backtrace" : 3,
@@ -102,11 +102,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-march=rv32i -mabi=ilp32 -ffreestanding -fno-exceptions -fno-rtti -O3 -DNDEBUG",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-nostdlib -ffreestanding",
+				"fragment" : "",
 				"role" : "flags"
 			},
 			{
@@ -159,7 +159,8 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				2
+				2,
+				3
 			]
 		}
 	],
@@ -180,6 +181,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "GPIO_DRIVER.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "MemoryMapPlan.h",
 			"sourceGroupIndex" : 2
 		}
 	],

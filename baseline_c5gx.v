@@ -87,7 +87,6 @@ module baseline_c5gx(
 		
 		
 `endif /*ENABLE_GPIO*/
-
       ///////// HDMI /////////
       output             HDMI_TX_CLK,
       output      [23:0] HDMI_TX_D,
@@ -166,8 +165,6 @@ module baseline_c5gx(
       ///////// UART ///////// 2.5 V ///////
       input              UART_RX,
       output             UART_TX
-
-
 );
 
 
@@ -180,55 +177,29 @@ CorePLL CorePLLInstance(
 		coreClock, // outclk0.clk
 		pllLocked    //  locked.export
 	);
-
-wire [15:0] HexDisplay;
-
-TrashbinSOC SOCInstance(
-
- coreClock,
- 
- 	LEDG[7:0],
-	LEDR[9:0],
-	HexDisplay,
 	
-	SW,
-	KEY
+TrashbinSOC SOCInstance(
+ coreClock,
+ IO,
 );
 
-SevenSegment seg0(
+//IO Interface binding
 
-HexDisplay[3:0],
-HEX0
+IOInterface IO();
 
-);
+assign HEX0 = IO.HEX0;
+assign HEX1 = IO.HEX1;
+assign HEX2 = IO.HEX2;
+assign HEX3 = IO.HEX3;
 
-SevenSegment seg1(
+assign LEDG = IO.LED_Green;
+assign LEDR = IO.LED_Red;
 
-HexDisplay[7:4],
-HEX1
-
-);
-
-SevenSegment seg2(
-
-HexDisplay[11:8],
-HEX2
-
-);
-
-SevenSegment seg3(
-
-HexDisplay[15:12],
-HEX3
-
-);
+assign IO.Switch = SW;
+assign IO.Key = KEY;
 
 
 	wire	  clock;
 	wire	  wren;
-
-//assign LEDG[0] = KEY[0];
-//assign LEDR[9:0] = data[9:0];
-
 
 endmodule

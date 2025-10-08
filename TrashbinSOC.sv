@@ -4,25 +4,12 @@ module TrashbinSOC(
 
 input wire CoreClock,
 
-output wire [7:0] w_LED_Green,
-output wire [9:0] W_LED_Red,
-output wire [15:0] w_HexDisplay,
-
-input wire [9:0] w_Switches,
-input wire [3:0] w_Keys
-
+IOInterface IO
 );
 
 
 wire [31:0] DebugData;
-
 wire [7:0] DummyGreen;
-
-//assign LEDS[9:0] = DebugData[29:20];
-//assign LEDS_G[0] = DebugData[0];
-//assign LEDS_G[1] = StartupSignal;
-
-//assign HexDisplay = {AddressBus[15:0]};
 
 //Memory Wires
 wire [31:0] AddressBus;
@@ -37,7 +24,6 @@ wire [31:0] DataWriteBus_P;
 wire WriteAssert_P;
 wire ReadAssert_P;
 wire [31:0] DataReadBus_p;
-
 
 
 reg StartupSignal = 1'd0;
@@ -76,12 +62,6 @@ FirstMemoryController firstMemoryController(
 	DataReadBus,
 	
 	GPIOMemoryInterface.MemoryController
-	
-	//AddressBus_P,
-	//DataWriteBus_P,
-	//WriteAssert_P,
-	//ReadAssert_P,
-	//DataReadBus_p
 );
 
 
@@ -98,35 +78,13 @@ TrashbinCore Core(
 	DebugData,
 	
 	cpuDataInterface.CPU
-	
-	//Memory bus
-	//AddressBus,
-	//DataReadBus,
-	//DataWriteBus,
-	//WriteAssert,
-	
-	
-	//1'b1, //Read OK
-	//1'b1 //Write OK
 );
 
 
 BasicGPIO GPIO_Controller(
 	CoreClock,
 	GPIOMemoryInterface.Peripheral,
-
-	//AddressBus_P,
-	//DataReadBus_p,
-	//DataWriteBus_P,
-	//WriteAssert_P,
-	//ReadAssert_P,
-
-	w_LED_Green,
-	W_LED_Red,
-	w_HexDisplay,
-	
-	w_Switches,
-	w_Keys
+	IO,
 );
 
 

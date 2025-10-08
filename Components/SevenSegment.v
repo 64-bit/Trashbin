@@ -40,6 +40,4 @@ endfunction
 
 assign segments[6:0] = get_segs(value);
 
-
 endmodule
-
