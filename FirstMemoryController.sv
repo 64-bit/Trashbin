@@ -26,11 +26,27 @@ module FirstMemoryController(
 	input wire [31:0] DataReadBus,
 	
 	//Peripherial interface
-	output wire [13:0] AddressBus_P,
-	output wire [31:0] DataWriteBus_P,
-	output wire WriteAssert_P,
-	output wire ReadAssert_P,
-	input wire [31:0] DataReadBus_P
+	
+	MMPeripheralInterface.MemoryController MMPeripheral
+	
+	/*
+	output AddressBus,
+	input DataReadBus
+	output DataWriteBus
+	
+	output WriteAssert,
+	output ReadAssert,
+	
+	input WriteOK,
+	input ReadOK);
+	*/
+	
+	
+	//output wire [13:0] AddressBus_P,
+	//output wire [31:0] DataWriteBus_P,
+	//output wire WriteAssert_P,
+	//output wire ReadAssert_P,
+	//input wire [31:0] DataReadBus_P
 );
 
 //It would be really cool if this could keep it's single cycle read nature, at least for aligned reads/writes
@@ -45,16 +61,17 @@ assign cpuInterface.ReadOK = 1'b1;
 assign cpuInterface.WriteOK = 1'b1;
 
 assign AddressBus = cpuInterface.AddressBus;//TODO:Support for mis-aligned LS
-assign AddressBus_P = cpuInterface.AddressBus;//TODO:Support for mis-aligned LS
+assign MMPeripheral.AddressBus = cpuInterface.AddressBus;//TODO:Support for mis-aligned LS
 
 assign DataWriteBus = cpuInterface.DataWriteBus;
-assign DataWriteBus_P = cpuInterface.DataWriteBus;
+assign MMPeripheral.DataWriteBus = cpuInterface.DataWriteBus;
 
 assign WriteAssert = cpuInterface.WriteAssert & !cpuInterface.AddressBus[16];
-assign WriteAssert_P = cpuInterface.WriteAssert & cpuInterface.AddressBus[16];
+assign MMPeripheral.WriteAssert = cpuInterface.WriteAssert & cpuInterface.AddressBus[16];
 
 assign ReadAssert = cpuInterface.ReadAssert & !cpuInterface.AddressBus[16];
-assign ReadAssert_P = cpuInterface.ReadAssert & cpuInterface.AddressBus[16];
+assign MMPeripheral.ReadAssert = cpuInterface.ReadAssert & cpuInterface.AddressBus[16];
+
 
 //assign cpuInterface.DataReadBus = DataReadBus;
 
@@ -71,7 +88,7 @@ cpuInterface.DataReadBus = DataReadBus;
 		end
 		
 		1'b1: begin
-		cpuInterface.DataReadBus = DataReadBus_P;
+		cpuInterface.DataReadBus = MMPeripheral.DataReadBus;
 		
 		end	
 	

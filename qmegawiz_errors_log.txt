@@ -144,3 +144,8 @@ wizard.lst file in the specified library path(s).Wizard launch aborted
 
 Oct 03 02PM:10:28>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
 wizard.lst file in the specified library path(s).Wizard launch aborted
+
+/home/FemboyWarlord/repos/Trashbin/CorePLL.v
+
+Oct 07 10PM:59:44>: Megafunction PLL Intel FPGA IP v23.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

@@ -61,6 +61,7 @@ end
 //assign w_LED_Green[7:1] = DebugData[6:0];
 
 CpuDataInterface cpuDataInterface();
+MMPeripheralInterface GPIOMemoryInterface();
 
 FirstMemoryController firstMemoryController(
 
@@ -74,11 +75,13 @@ FirstMemoryController firstMemoryController(
 	ReadAssert,
 	DataReadBus,
 	
-	AddressBus_P,
-	DataWriteBus_P,
-	WriteAssert_P,
-	ReadAssert_P,
-	DataReadBus_p
+	GPIOMemoryInterface.MemoryController
+	
+	//AddressBus_P,
+	//DataWriteBus_P,
+	//WriteAssert_P,
+	//ReadAssert_P,
+	//DataReadBus_p
 );
 
 
@@ -110,12 +113,13 @@ TrashbinCore Core(
 
 BasicGPIO GPIO_Controller(
 	CoreClock,
+	GPIOMemoryInterface.Peripheral,
 
-	AddressBus_P,
-	DataReadBus_p,
-	DataWriteBus_P,
-	WriteAssert_P,
-	ReadAssert_P,
+	//AddressBus_P,
+	//DataReadBus_p,
+	//DataWriteBus_P,
+	//WriteAssert_P,
+	//ReadAssert_P,
 
 	w_LED_Green,
 	W_LED_Red,

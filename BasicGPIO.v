@@ -3,12 +3,30 @@ module BasicGPIO(
 
 input CoreClock,
 
+
+MMPeripheralInterface.Peripheral	MemoryController,
+
+/*
+modport Peripheral(
+	input AddressBus,
+	output DataReadBus
+	input DataWriteBus
+	
+	input WriteAssert,
+	input ReadAssert,
+	
+	output WriteOK,
+	output ReadOK);
+*/
+
+
+/*
 input wire [31:0] AddressBus,
 output wire [31:0] DataReadBus,
 input wire [31:0] DataWriteBus,
 input WriteAssert,
 input ReadAssert,
-
+*/
 
 
 output wire [7:0] w_LED_Green,
@@ -29,8 +47,9 @@ reg [15:0] Keys;		//0x1004
 
 reg [15:0] DataReadRegister;
 
-assign DataReadBus = {16'h0, DataReadRegister};
-
+assign MemoryController.DataReadBus = {16'h0, DataReadRegister};
+assign MemoryController.WriteOK = 1'b1;
+assign MemoryController.ReadOK = 1'b1;
 
 //Always, drive output values from register
 assign w_LED_Green = LED_Green[7:0];
@@ -49,7 +68,7 @@ always@(*)
 begin
 	DataReadRegister[15:0] <= 16'h0;
 	
-	case(AddressBus[15:0])
+	case(MemoryController.AddressBus[15:0])
 
 	16'h0000: DataReadRegister[15:0] <= LED_Green;
 	16'h0004: DataReadRegister[15:0] <= LED_Red;
@@ -65,12 +84,12 @@ end
 
 always@(posedge CoreClock)
 begin
-	if(WriteAssert) begin
-		case(AddressBus[15:0])
+	if(MemoryController.WriteAssert) begin
+		case(MemoryController.AddressBus[15:0])
  
-			16'h0000: LED_Green <= DataWriteBus[15:0];
-			16'h0004: LED_Red <= DataWriteBus[15:0];
-			16'h0008: HexDisplay <= DataWriteBus[15:0];
+			16'h0000: LED_Green <= MemoryController.DataWriteBus[15:0];
+			16'h0004: LED_Red <= MemoryController.DataWriteBus[15:0];
+			16'h0008: HexDisplay <= MemoryController.DataWriteBus[15:0];
  
 		endcase
 	end
