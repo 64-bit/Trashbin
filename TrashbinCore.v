@@ -39,6 +39,8 @@ CpuDataInterface coreMemoryInterface
 
 
 assign coreMemoryInterface.WriteAssert = CPU_PHASE == 2 & IsMemoryWrite;
+assign coreMemoryInterface.ReadAssert = CPU_PHASE == 2 & IsMemoryRead;
+
 assign coreMemoryInterface.DataWriteBus = RegisterReadPortB;//Data can only be written from ReadPortB
 
 //assign DebugData[0] = coreMemoryInterface.DataReadBus[0];
@@ -187,6 +189,9 @@ wire [31:0] ALU_Result;
 wire [5:0] ALU_Comparisons;
 wire [3:0] ALU_Func;
 
+wire [31:0] AddressCalculationAdder;
+assign AddressCalculationAdder = LHS + RHS;
+
 ALU alu(
 	LHS,
 	RHS,
@@ -259,8 +264,8 @@ begin
 	
 	if((CPU_PHASE == 2 | CPU_PHASE == 3) & (IsMemoryWrite | IsMemoryRead))
 	begin
-		//This is a load-store operation, drive this via the ALU result
-		coreMemoryInterface.AddressBus <= ALU_Result[31:0];
+		//This is a load-store operation, drive this via the address adder
+		coreMemoryInterface.AddressBus <= AddressCalculationAdder[31:0];
 	end else begin
 		//If not in load-store phase of a load store instruction, drive via program counter
 		coreMemoryInterface.AddressBus <= ProgramCounter[31:0];

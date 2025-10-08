@@ -7,7 +7,7 @@ input wire [31:0] AddressBus,
 output wire [31:0] DataReadBus,
 input wire [31:0] DataWriteBus,
 input WriteAssert,
-
+input ReadAssert,
 
 
 
@@ -41,7 +41,7 @@ assign w_HexDisplay = HexDisplay[15:0];
 always@(posedge CoreClock)
 begin
 	Switches[9:0] <= w_Switches;
-	Keys[3:0] <= w_Keys;
+	Keys[3:0] <= ~w_Keys;
 end
 
 //Always, drive the data read bus with the correct register
@@ -52,11 +52,11 @@ begin
 	case(AddressBus[15:0])
 
 	16'h0000: DataReadRegister[15:0] <= LED_Green;
-	16'h0001: DataReadRegister[15:0] <= LED_Red;
-	16'h0002: DataReadRegister[15:0] <= HexDisplay;
+	16'h0004: DataReadRegister[15:0] <= LED_Red;
+	16'h0008: DataReadRegister[15:0] <= HexDisplay;
 	
-	16'h1000: DataReadRegister[15:0] <= Switches;
-	16'h1004: DataReadRegister[15:0] <= Keys;
+	16'h000C: DataReadRegister[15:0] <= Switches;
+	16'h0010: DataReadRegister[15:0] <= Keys;
 	
 	endcase
 end
@@ -69,8 +69,8 @@ begin
 		case(AddressBus[15:0])
  
 			16'h0000: LED_Green <= DataWriteBus[15:0];
-			16'h0001: LED_Red <= DataWriteBus[15:0];
-			16'h0002: HexDisplay <= DataWriteBus[15:0];
+			16'h0004: LED_Red <= DataWriteBus[15:0];
+			16'h0008: HexDisplay <= DataWriteBus[15:0];
  
 		endcase
 	end

@@ -1,35 +1,41 @@
-//#include <iostream>
 
-volatile unsigned int* LED_Green = (unsigned int*) 0x10000;
-volatile unsigned int* LED_Red = (unsigned int*) 0x10004;
-volatile unsigned int* HexDisplay = (unsigned int*) 0x10008;
+//#include "GPIO_DRIVER.h"
+//Driver code for hardware Input/output devices
 
-volatile unsigned int* Switches = (unsigned int*) 0x11000;
-volatile unsigned int* Keys = (unsigned int*) 0x11004;
+//8 Green LEDS, 1 per bit
+volatile unsigned int* const LED_Green = (unsigned int*) 0x10000;
+//10 Red LEDS, 1 per bit
+volatile unsigned int* const LED_Red = (unsigned int*) 0x10004;
+//4 7 segment displays showing the lower 16 bits of the value in HEX
+volatile unsigned int* const HexDisplay = (unsigned int*) 0x10008;
 
-/* From verilog
-reg [15:0] LED_Green; //0x0000 8 LEDS
-reg [15:0] LED_Red;	 //0x0004 10 LEDS
-reg [15:0] HexDisplay;//0x0008
-
-reg [15:0] Switches; //0x1000    10 Switches
-reg [15:0] Keys;		//0x1004 4 Keys
-*/
+//10 hardware switches, 1 bit per switch
+volatile unsigned int* const Switches = (unsigned int*) 0x1000C;
+//4 buttons, 1 bit per button
+volatile unsigned int* const Keys = (unsigned int*) 0x10010;
 
 void main()
 {
     int counter = 0;
-
-    while(true)
+    while((*Keys & 0x1) == 0)
     {
-        *LED_Green = counter;
-        int shifted = counter >> 8;
-        *LED_Red = shifted;
-
-        *HexDisplay = counter;
-
+        *LED_Red = counter >> 8;
         counter++;
     }
 
 
+    counter = 0;
+
+    while(true)
+    {
+        int shifted = counter >> 8;
+        *LED_Green = shifted;
+        shifted = shifted >> 8;
+        *LED_Red = shifted;
+
+        *HexDisplay = shifted;
+
+        counter++;
+
+    }
 }

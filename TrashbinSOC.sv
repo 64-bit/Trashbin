@@ -28,13 +28,14 @@ wire [7:0] DummyGreen;
 wire [31:0] AddressBus;
 wire [31:0] DataReadBus;
 wire [31:0] DataWriteBus;
-
 wire WriteAssert;
+wire ReadAssert;
 
 wire [13:0] AddressBus_P;
 //Peripheral Wires
 wire [31:0] DataWriteBus_P;
 wire WriteAssert_P;
+wire ReadAssert_P;
 wire [31:0] DataReadBus_p;
 
 
@@ -56,8 +57,8 @@ begin
 	end
 end
 
-assign w_LED_Green[0] = StartupCounter;
-assign w_LED_Green[7:1] = DebugData[6:0];
+//assign w_LED_Green[0] = StartupCounter;
+//assign w_LED_Green[7:1] = DebugData[6:0];
 
 CpuDataInterface cpuDataInterface();
 
@@ -70,17 +71,19 @@ FirstMemoryController firstMemoryController(
 	AddressBus,
 	DataWriteBus,
 	WriteAssert,
+	ReadAssert,
 	DataReadBus,
 	
 	AddressBus_P,
 	DataWriteBus_P,
 	WriteAssert_P,
+	ReadAssert_P,
 	DataReadBus_p
 );
 
 
 TempRam datRam(
-	AddressBus[13:0],
+	AddressBus[15:2],
 	CoreClock,
 	DataWriteBus,
 	WriteAssert,
@@ -112,8 +115,9 @@ BasicGPIO GPIO_Controller(
 	DataReadBus_p,
 	DataWriteBus_P,
 	WriteAssert_P,
+	ReadAssert_P,
 
-	DummyGreen,
+	w_LED_Green,
 	W_LED_Red,
 	w_HexDisplay,
 	

@@ -37,6 +37,15 @@ wire Comparison_GreaterEqualsSigned = !Comparison_LessThanSigned;
 	0111 -> AND
 */
 
+wire [31:0] LogicalShiftResult;
+
+
+BarrelShifterLogical LogicalShifter(
+	LHS,
+	Function[2],
+	RHS[4:0],
+	LogicalShiftResult);
+
 
 function [31:0] ALU_Logic;
 	input [31:0] lhs;
@@ -49,15 +58,17 @@ function [31:0] ALU_Logic;
 		4'b0000 : ALU_Logic = LHS + RHS;
 		4'b1000 : ALU_Logic = LHS - RHS;
 		
-		4'b0001 : ALU_Logic = LHS << RHS[4:0];
-		
+		//4'b0001 : ALU_Logic = LHS << RHS[4:0];
+		4'b0001 : ALU_Logic = LogicalShiftResult;
+
 		4'b0010 : ALU_Logic = {31'd0, Comparison_LessThanSigned}; //Set Less than
 		4'b0011 : ALU_Logic = {31'd0, Comparison_LessThanUnsigned}; //Set Less than unsigned
 		
 		
 		4'b0100 : ALU_Logic = LHS ^ RHS;
 
-		4'b0101 : ALU_Logic = LHS >> RHS[4:0];
+		//4'b0101 : ALU_Logic = LHS >> RHS[4:0];
+		4'b0101 : ALU_Logic = LogicalShiftResult;
 		4'b1101 : ALU_Logic = LHS >>> RHS[4:0];
 		
 		

@@ -4,27 +4,42 @@
 # 1 "/home/FemboyWarlord/repos/Trashbin/Code/main.cpp"
 
 
-volatile unsigned int* LED_Green = (unsigned int*) 0x10000;
-volatile unsigned int* LED_Red = (unsigned int*) 0x10004;
-volatile unsigned int* HexDisplay = (unsigned int*) 0x10008;
 
-volatile unsigned int* Switches = (unsigned int*) 0x11000;
-volatile unsigned int* Keys = (unsigned int*) 0x11004;
-# 19 "/home/FemboyWarlord/repos/Trashbin/Code/main.cpp"
+
+
+volatile unsigned int* const LED_Green = (unsigned int*) 0x10000;
+
+volatile unsigned int* const LED_Red = (unsigned int*) 0x10004;
+
+volatile unsigned int* const HexDisplay = (unsigned int*) 0x10008;
+
+
+volatile unsigned int* const Switches = (unsigned int*) 0x1000C;
+
+volatile unsigned int* const Keys = (unsigned int*) 0x10010;
+
 void main()
 {
     int counter = 0;
-
-    while(true)
+    while((*Keys & 0x1) == 0)
     {
-        *LED_Green = counter;
-        int shifted = counter >> 8;
-        *LED_Red = shifted;
-
-        *HexDisplay = counter;
-
+        *LED_Red = counter >> 8;
         counter++;
     }
 
 
+    counter = 0;
+
+    while(true)
+    {
+        int shifted = counter >> 8;
+        *LED_Green = shifted;
+        shifted = shifted >> 8;
+        *LED_Red = shifted;
+
+        *HexDisplay = shifted;
+
+        counter++;
+
+    }
 }

@@ -22,12 +22,14 @@ module FirstMemoryController(
 	output wire [13:0] AddressBus,
 	output wire [31:0] DataWriteBus,
 	output wire WriteAssert,
+	output wire ReadAssert,
 	input wire [31:0] DataReadBus,
 	
 	//Peripherial interface
 	output wire [13:0] AddressBus_P,
 	output wire [31:0] DataWriteBus_P,
 	output wire WriteAssert_P,
+	output wire ReadAssert_P,
 	input wire [31:0] DataReadBus_P
 );
 
@@ -42,14 +44,17 @@ reg [31:0] MisalignedReadBuffer;
 assign cpuInterface.ReadOK = 1'b1;
 assign cpuInterface.WriteOK = 1'b1;
 
-assign AddressBus = cpuInterface.AddressBus[15:2];//TODO:Support for mis-aligned LS
-assign AddressBus_P = cpuInterface.AddressBus[15:2];//TODO:Support for mis-aligned LS
+assign AddressBus = cpuInterface.AddressBus;//TODO:Support for mis-aligned LS
+assign AddressBus_P = cpuInterface.AddressBus;//TODO:Support for mis-aligned LS
 
 assign DataWriteBus = cpuInterface.DataWriteBus;
 assign DataWriteBus_P = cpuInterface.DataWriteBus;
 
 assign WriteAssert = cpuInterface.WriteAssert & !cpuInterface.AddressBus[16];
 assign WriteAssert_P = cpuInterface.WriteAssert & cpuInterface.AddressBus[16];
+
+assign ReadAssert = cpuInterface.ReadAssert & !cpuInterface.AddressBus[16];
+assign ReadAssert_P = cpuInterface.ReadAssert & cpuInterface.AddressBus[16];
 
 //assign cpuInterface.DataReadBus = DataReadBus;
 

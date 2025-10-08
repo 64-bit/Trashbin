@@ -275,10 +275,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "UNINITIALIZED",
 			"value" : "/usr/bin/riscv64-unknown-elf-g++"
 		},
 		{
@@ -403,10 +403,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "UNINITIALIZED",
 			"value" : "/usr/bin/riscv64-unknown-elf-gcc"
 		},
 		{
@@ -1231,11 +1231,11 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "The CMake toolchain file"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "/home/FemboyWarlord/repos/Trashbin/Code/riscv_toolchain.cmake"
+			"type" : "UNINITIALIZED",
+			"value" : "riscv_toolchain.cmake"
 		},
 		{
 			"name" : "CMAKE_UNAME",
